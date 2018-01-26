@@ -42,9 +42,10 @@ public class GameManager : MonoBehaviour {
         roadSegment.transform.SetParent(transform);
 
         RoadSegment rs = roadSegment.GetComponent<RoadSegment>();
-        rs.SetSpeed(gameSpeed);
+        rs.SetSpeed(gameSpeed * -1);
 
         GameObject o = Instantiate(cars[0], roadSegment.transform);
+        var bounds = o.GetComponent<Renderer>().bounds.size;
         o.transform.localPosition = Vector3.zero;
         rs.AddCar(o);
         
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour {
         for (int i = 19; i > 0; i--)
         {
             GameObject g = ActivateSegmentFromPool();
-            g.GetComponent<RoadSegment>().MoveForward(i * spawnDistance);
+            g.GetComponent<RoadSegment>().MoveForward(-i * spawnDistance);
         }
     }
 #endregion
