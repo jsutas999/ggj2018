@@ -346,7 +346,7 @@ Transform:
   m_LocalScale: {x: 34.036125, y: 1, z: 50.06356}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482472874 stripped
 GameObject:
@@ -916,51 +916,6 @@ CapsuleCollider:
   m_Height: 0.01823394
   m_Direction: 1
   m_Center: {x: 0, y: 0.00911697, z: 0}
---- !u!1 &1503480809
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1503480811}
-  - component: {fileID: 1503480810}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1503480810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1503480809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5294d6f0bd41d704fbbcb6216fd4023e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roadSegments:
-  - {fileID: 1529858065342562, guid: 39becdd2e362fbe4db8c2d8170218ff6, type: 2}
-  gameSpeed: 1
-  removeDistance: 10
-  spanDistance: 10
---- !u!4 &1503480811
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1503480809}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6866522, y: -0.026865005, z: 9.82}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691109944 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100044, guid: 9e05e1f16c3ad5f459118a4d0e398b4d, type: 3}
