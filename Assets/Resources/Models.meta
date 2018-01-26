@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Models.meta
 guid: 350c7723f6e0c044bbe1375ceaa3a066
 folderAsset: yes
 timeCreated: 1517002944
+=======
+guid: 49dfb9dfa3376364184cda34b0e058eb
+folderAsset: yes
+timeCreated: 1517002957
+>>>>>>> kiniulis:Assets/Resources/Models.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

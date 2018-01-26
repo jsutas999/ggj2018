@@ -1,71 +1,18 @@
 fileFormatVersion: 2
-guid: 9e05e1f16c3ad5f459118a4d0e398b4d
-timeCreated: 1517003926
+guid: 9cb119f09f2208b468c673661d379520
+timeCreated: 1517009032
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: arm.l
-    100002: arm.r
-    100004: arm2.l
-    100006: arm2.r
-    100008: Armature
-    100010: //RootNode
-    100012: Cube
-    100014: foot.l
-    100016: foot.l_end
-    100018: foot.r
-    100020: foot.r_end
-    100022: hand.l
-    100024: hand.l_end
-    100026: hand.r
-    100028: hand.r_end
-    100030: head
-    100032: head_end
-    100034: leg1.l
-    100036: leg1.r
-    100038: leg2.l
-    100040: leg2.r
-    100042: mainspine
-    100044: neck
-    100046: pelvis
-    400000: arm.l
-    400002: arm.r
-    400004: arm2.l
-    400006: arm2.r
-    400008: Armature
-    400010: //RootNode
-    400012: Cube
-    400014: foot.l
-    400016: foot.l_end
-    400018: foot.r
-    400020: foot.r_end
-    400022: hand.l
-    400024: hand.l_end
-    400026: hand.r
-    400028: hand.r_end
-    400030: head
-    400032: head_end
-    400034: leg1.l
-    400036: leg1.r
-    400038: leg2.l
-    400040: leg2.r
-    400042: mainspine
-    400044: neck
-    400046: pelvis
-    2100000: Shirt
-    2100002: Pants
-    2100004: Skin
-    2100006: Boots
-    2100008: eyePupils
-    2100010: eyes
-    2100012: Teeth
+    100000: //RootNode
+    400000: //RootNode
+    2100000: unnamed
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Cube
-    7400000: Armature|Falling
-    7400002: Armature|StartFall
-    7400004: Armature|StartFallCorrect
+    7400000: Default Take
     9500000: //RootNode
-    13700000: Cube
   externalObjects: {}
   materials:
     importMaterials: 1
