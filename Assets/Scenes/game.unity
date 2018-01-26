@@ -222,10 +222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadSegments:
-  - {fileID: 1529858065342562, guid: 39becdd2e362fbe4db8c2d8170218ff6, type: 2}
+  - {fileID: 1565969356463024, guid: b2dba371fb6a0f84395846a825803012, type: 2}
   gameSpeed: 0.1
-  removeDistance: 100
-  spawnDistance: 9.9
+  removeDistance: 200
+  spawnDistance: 8.79
 --- !u!4 &1503480811
 Transform:
   m_ObjectHideFlags: 0
