@@ -14,28 +14,12 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-        // Builds up queue
-        for(int i = 0; i < 20; i++)
-        {
-            GameObject t = MakeRoudSegment();
-            pool.Enqueue(t);
-        }
-
-        // Pulls from queue to build road
-        for(int i = 0; i < 20; i++)
-        {
-            GameObject g = ActivateSegmentFromPool();
-            g.GetComponent<RoadSegment>().MoveForward(i*spawnDistance);
-        }
-
-        
-
+        BuildPoolQueue();
+        BuildRoad();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
         UpdateSpawned();
 	}
 
@@ -95,5 +79,27 @@ public class GameManager : MonoBehaviour {
         spawned.Add(go);
         return go;
    }
+
+
+#region START
+
+    private void BuildPoolQueue()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            GameObject t = MakeRoudSegment();
+            pool.Enqueue(t);
+        }
+    }
+
+    private void BuildRoad()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            GameObject g = ActivateSegmentFromPool();
+            g.GetComponent<RoadSegment>().MoveForward(i * spawnDistance);
+        }
+    }
+#endregion
 
 }
