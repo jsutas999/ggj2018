@@ -9,6 +9,9 @@ public class PlayerControll : MonoBehaviour {
     float boost = 1;
     public bool usingCar = true;
     public GameObject car;
+    public bool crash = false;
+    public GameObject playerToss;
+    public float force, height;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -23,6 +26,20 @@ public class PlayerControll : MonoBehaviour {
         else
             boost = 1;
         rb.AddRelativeForce(new Vector3(h * moveSpeed, 0, v * moveSpeed * boost));
-        //transform.position = car.transform.position;
+        if (usingCar)
+        {
+            //car.GetComponent<BoxCollider>().enabled = false;
+            car.transform.parent = transform;
+            car.transform.position = transform.position;
+        }
+        if (crash)
+        {
+            crash = false;
+            GameObject toss;
+            toss = Instantiate(playerToss, transform.position, Quaternion.identity);
+            toss.GetComponent<PlayerToss>().force = force;
+            toss.GetComponent<PlayerToss>().height = height;
+
+        }
     }
 }
