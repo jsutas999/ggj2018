@@ -12,6 +12,7 @@ public class PlayerControll : MonoBehaviour {
     public bool crash = false;
     public GameObject playerToss;
     public float force, height;
+    public GameObject cam;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -32,14 +33,18 @@ public class PlayerControll : MonoBehaviour {
             car.transform.parent = transform;
             car.transform.position = transform.position;
         }
-        if (crash)
+        force = rb.velocity.z * 50;
+        force = Mathf.Clamp(force, 200f, 1000f);
+        if (crash || Input.GetKeyDown(KeyCode.Space))
         {
             crash = false;
             GameObject toss;
             toss = Instantiate(playerToss, transform.position, Quaternion.identity);
             toss.GetComponent<PlayerToss>().force = force;
             toss.GetComponent<PlayerToss>().height = height;
-
+            car.transform.parent = null;
+            cam.GetComponent<CameraFollow>().player = toss;
+            gameObject.SetActive(false);
         }
     }
 }
