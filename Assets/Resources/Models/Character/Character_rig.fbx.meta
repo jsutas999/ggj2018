@@ -1,58 +1,58 @@
 fileFormatVersion: 2
-guid: 9f1ab6d900103d84f8de299cebb8b478
-timeCreated: 1517003000
+guid: 9e05e1f16c3ad5f459118a4d0e398b4d
+timeCreated: 1517003926
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: arm.l
-    100002: arm.l.001
+    100002: arm.r
     100004: arm2.l
-    100006: arm2.l.001
+    100006: arm2.r
     100008: Armature
-    100010: Bone
-    100012: Bone.001
-    100014: Bone.002
-    100016: Bone.003
-    100018: Bone.003_end
-    100020: //RootNode
-    100022: Cube
-    100024: foot.l
-    100026: foot.l.001
-    100028: foot.l.001_end
-    100030: foot.l_end
-    100032: hand.l
-    100034: hand.l.001
-    100036: hand.l.001_end
-    100038: hand.l_end
-    100040: leg1.l
-    100042: leg1.l.001
-    100044: leg2.l
-    100046: leg2.l.001
+    100010: //RootNode
+    100012: Cube
+    100014: foot.l
+    100016: foot.l_end
+    100018: foot.r
+    100020: foot.r_end
+    100022: hand.l
+    100024: hand.l_end
+    100026: hand.r
+    100028: hand.r_end
+    100030: head
+    100032: head_end
+    100034: leg1.l
+    100036: leg1.r
+    100038: leg2.l
+    100040: leg2.r
+    100042: mainspine
+    100044: neck
+    100046: pelvis
     400000: arm.l
-    400002: arm.l.001
+    400002: arm.r
     400004: arm2.l
-    400006: arm2.l.001
+    400006: arm2.r
     400008: Armature
-    400010: Bone
-    400012: Bone.001
-    400014: Bone.002
-    400016: Bone.003
-    400018: Bone.003_end
-    400020: //RootNode
-    400022: Cube
-    400024: foot.l
-    400026: foot.l.001
-    400028: foot.l.001_end
-    400030: foot.l_end
-    400032: hand.l
-    400034: hand.l.001
-    400036: hand.l.001_end
-    400038: hand.l_end
-    400040: leg1.l
-    400042: leg1.l.001
-    400044: leg2.l
-    400046: leg2.l.001
+    400010: //RootNode
+    400012: Cube
+    400014: foot.l
+    400016: foot.l_end
+    400018: foot.r
+    400020: foot.r_end
+    400022: hand.l
+    400024: hand.l_end
+    400026: hand.r
+    400028: hand.r_end
+    400030: head
+    400032: head_end
+    400034: leg1.l
+    400036: leg1.r
+    400038: leg2.l
+    400040: leg2.r
+    400042: mainspine
+    400044: neck
+    400046: pelvis
     2100000: Shirt
     2100002: Pants
     2100004: Skin
