@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour {
     public GameObject[] roadSegments;
     public float gameSpeed = 0.1f;
     private float timer = 0f;
-    public float removeDistance = 10f;
-    public float spanDistance = 10f;
+    public float removeDistance = 100f;
+    public float spawnDistance = 9.9f;
     private List<GameObject> spawned = new List<GameObject>();
     private Queue<GameObject> pool = new Queue<GameObject>();
 
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
 
         if(nearest != null)
         {
-            if(nDist > spanDistance)
+            if(nDist > spawnDistance)
             {
                 ActivateSegmentFromPool();
             }
