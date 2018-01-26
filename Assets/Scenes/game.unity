@@ -224,6 +224,8 @@ MonoBehaviour:
   roadSegments:
   - {fileID: 1565969356463024, guid: b2dba371fb6a0f84395846a825803012, type: 2}
   - {fileID: 1529858065342562, guid: 39becdd2e362fbe4db8c2d8170218ff6, type: 2}
+  cars:
+  - {fileID: 1791245160049130, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
   gameSpeed: 0.1
   removeDistance: 200
   spawnDistance: 8.79
@@ -234,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1503480809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6866522, y: -0.026865005, z: 9.82}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

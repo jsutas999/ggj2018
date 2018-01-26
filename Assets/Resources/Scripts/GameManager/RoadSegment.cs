@@ -6,6 +6,8 @@ public class RoadSegment : MonoBehaviour {
 
     private float speed;
 
+    private List<GameObject> cars = new List<GameObject>();
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,7 +15,7 @@ public class RoadSegment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(new Vector3(speed, 0, 0));
+        transform.Translate(new Vector3(0, 0, speed * Time.deltaTime ));
     }
 
     public void SetSpeed(float speed)
@@ -23,8 +25,13 @@ public class RoadSegment : MonoBehaviour {
 
     public void MoveForward(float distance)
     {
-        transform.Translate(new Vector3(distance, 0, 0));
+        transform.Translate(new Vector3(0, 0, distance));
 
+    }
+
+    public void AddCar(GameObject c)
+    {
+        cars.Add(c);
     }
 
 

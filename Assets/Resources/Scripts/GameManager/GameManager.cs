@@ -5,10 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public GameObject[] roadSegments;
+    public GameObject[] cars;
     public float gameSpeed = 0.1f;
-    private float timer = 0f;
     public float removeDistance = 100f;
     public float spawnDistance = 9.9f;
+
+
     private Queue<GameObject> spawned = new Queue<GameObject>();
     private Queue<GameObject> pool = new Queue<GameObject>();
     private GameObject lastSpawned = null;
@@ -38,7 +40,14 @@ public class GameManager : MonoBehaviour {
         roadSegment.SetActive(false);
         roadSegment.transform.position = transform.position;
         roadSegment.transform.SetParent(transform);
-        roadSegment.GetComponent<RoadSegment>().SetSpeed(gameSpeed);
+
+        RoadSegment rs = roadSegment.GetComponent<RoadSegment>();
+        rs.SetSpeed(gameSpeed);
+
+        GameObject o = Instantiate(cars[0], roadSegment.transform);
+        o.transform.localPosition = Vector3.zero;
+        rs.AddCar(o);
+        
         return roadSegment;
     }
 
