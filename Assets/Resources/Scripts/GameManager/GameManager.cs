@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour {
     private float timer = 0f;
     public float removeDistance = 100f;
     public float spawnDistance = 9.9f;
-    private List<GameObject> spawned = new List<GameObject>();
+    private Queue<GameObject> spawned = new Queue<GameObject>();
     private Queue<GameObject> pool = new Queue<GameObject>();
+    private GameObject lastSpawned = null;
 
 	// Use this for initialization
 	void Start () {
@@ -26,38 +27,8 @@ public class GameManager : MonoBehaviour {
 
     private void  UpdateSpawned()
     {
-        List<GameObject> forDeletion = new List<GameObject>();
-
-        GameObject nearest = null;
-        float nDist = 9999999999999;
-
-        foreach (GameObject spawn in spawned)
-        {
-            var dist = Vector3.Distance(transform.position, spawn.transform.position);
-            if (dist > removeDistance)
-            {
-                forDeletion.Add(spawn);
-            } else if (nDist > dist){
-                nearest = spawn;
-                nDist = dist;
-            }
-        }
-
-        if(nearest != null)
-        {
-            if(nDist > spawnDistance)
-            {
-                ActivateSegmentFromPool();
-            }
-        }
-
-
-        foreach(GameObject d in forDeletion)
-        {
-            spawned.Remove(d);
-            d.SetActive(false);
-            pool.Enqueue(d);
-        }
+        RemoveOutOfBoundsSegment();
+        FillSegmentGap();
     }
 
     private GameObject MakeRoudSegment()
@@ -76,12 +47,36 @@ public class GameManager : MonoBehaviour {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
         go.SetActive(true);
         go.transform.position = transform.position;
-        spawned.Add(go);
+        spawned.Enqueue(go);
+        lastSpawned = go;
         return go;
    }
 
 
-#region START
+    #region Update
+
+    private void RemoveOutOfBoundsSegment()
+    {
+        GameObject oldest = spawned.Peek();
+        var dist = Vector3.Distance(transform.position, oldest.transform.position);
+        if (dist > removeDistance)
+        {
+            pool.Enqueue(spawned.Dequeue());
+            oldest.SetActive(false);
+        }
+    }
+
+    private void FillSegmentGap()
+    {
+        var dist = Vector3.Distance(transform.position, lastSpawned.transform.position);
+        if(dist > spawnDistance)
+        {
+            ActivateSegmentFromPool();
+        }
+    }
+#endregion
+
+    #region START
 
     private void BuildPoolQueue()
     {
@@ -94,7 +89,7 @@ public class GameManager : MonoBehaviour {
 
     private void BuildRoad()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 19; i > 0; i--)
         {
             GameObject g = ActivateSegmentFromPool();
             g.GetComponent<RoadSegment>().MoveForward(i * spawnDistance);
