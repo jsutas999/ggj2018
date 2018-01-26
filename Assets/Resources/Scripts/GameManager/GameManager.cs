@@ -15,12 +15,21 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        for(int i = 0; i < 10; i++)
+        // Builds up queue
+        for(int i = 0; i < 20; i++)
         {
             GameObject t = MakeRoudSegment();
             pool.Enqueue(t);
         }
-        ActivateSegmentFromPool();
+
+        // Pulls from queue to build road
+        for(int i = 0; i < 20; i++)
+        {
+            GameObject g = ActivateSegmentFromPool();
+            g.GetComponent<RoadSegment>().MoveForward(i*spawnDistance);
+        }
+
+        
 
 	}
 	
@@ -74,16 +83,17 @@ public class GameManager : MonoBehaviour {
         roadSegment.SetActive(false);
         roadSegment.transform.position = transform.position;
         roadSegment.transform.SetParent(transform);
-        roadSegment.GetComponent<RoadSegment>().setSpeed(gameSpeed);
+        roadSegment.GetComponent<RoadSegment>().SetSpeed(gameSpeed);
         return roadSegment;
     }
 
-   private void ActivateSegmentFromPool()
+   private GameObject ActivateSegmentFromPool()
    {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
         go.SetActive(true);
         go.transform.position = transform.position;
         spawned.Add(go);
+        return go;
    }
 
 }

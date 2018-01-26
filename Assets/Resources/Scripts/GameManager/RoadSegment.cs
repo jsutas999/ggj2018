@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoadSegment : MonoBehaviour {
 
-    public float speed;
+    private float speed;
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +16,16 @@ public class RoadSegment : MonoBehaviour {
         transform.Translate(new Vector3(speed, 0, 0));
     }
 
-    public void setSpeed(float speed)
+    public void SetSpeed(float speed)
     {
         this.speed = speed;
     }
+
+    public void MoveForward(float distance)
+    {
+        transform.Translate(new Vector3(distance, 0, 0));
+
+    }
+
+
 }
