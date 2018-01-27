@@ -15,7 +15,7 @@ public class CarSpawningBehavior : SpawningBehavior
         return bounds;
     }
 
-    public override Vector3 TransformPositio(Vector3 position)
+    public override Vector3 TransformPosition(Vector3 position)
     {
         position.x = Random.Range(-RoadWidth / 2f, RoadWidth / 2f);
         return position;

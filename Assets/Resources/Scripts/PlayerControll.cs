@@ -13,6 +13,7 @@ public class PlayerControll : MonoBehaviour {
     public GameManager gm;
     public PlayerToss pToss;
 
+
 	void Start () {
         rb = GetComponent<Rigidbody>();
         car.transform.parent = transform;
@@ -24,17 +25,19 @@ public class PlayerControll : MonoBehaviour {
         v = Input.GetAxis("Vertical");
 
         // gm.SetSpeed(gm.GetSpeed() + h);
-        //gm.SetSpeed(15 + v * 5f);
+        gm.SetSpeedScenery(20 + v * 5f);
+        gm.SetSpeedCars(10 + v * 5f);
 
-        height = 150 + v * 50;
+        height = 200 + v * 100;
         side = rb.velocity.x * 50;
-        rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
+        transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
+        //rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
         if (Input.GetKeyDown(KeyCode.Space))
             Crash();
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit " + collision.collider);
+        //Debug.Log("Hit " + collision.collider);
         Crash();
     }
     void Crash() {
@@ -48,7 +51,7 @@ public class PlayerControll : MonoBehaviour {
         pToss.height = height;
         pToss.side = side;
         //car.transform.parent = hit.transform;
-        Destroy(car);
+        gm.AddCarToSegment(car);
 
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);

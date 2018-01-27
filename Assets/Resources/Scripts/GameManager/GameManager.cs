@@ -52,4 +52,16 @@ public class GameManager : MonoBehaviour {
     {
         CarSegmentManager.SetSpeed(speed);
     }
+
+    public void RemoveCarFromSegment(GameObject car)
+    {
+        CarSegmentManager.RemoveFromManager(car);
+   
+    }
+
+    public void AddCarToSegment(GameObject car)
+    {
+        CarSegmentManager.AddToSegment(car);
+    }
+
 }

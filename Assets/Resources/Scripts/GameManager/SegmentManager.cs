@@ -15,8 +15,8 @@ public class SegmentManager : MonoBehaviour {
 
     public SpawningBehavior segmentBehavior;
     private float spawnDistance = 9.9f;
-    private Queue<GameObject> spawned = new Queue<GameObject>();
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    private SpecialQueue<GameObject> spawned = new SpecialQueue<GameObject>();
+    private SpecialQueue<GameObject> pool = new SpecialQueue<GameObject>();
     private GameObject lastSpawned = null;
     public RoadObjectsManager roadObjectsManager;
 
@@ -54,7 +54,7 @@ public class SegmentManager : MonoBehaviour {
     public void SetSpeed(float speed)
     {
         gameSpeed = speed;
-        foreach(GameObject o in spawned)
+        foreach(GameObject o in spawned.GetList())
         {
             o.GetComponent<Segment>().SetSpeed(speed * -1);
         } 
@@ -145,6 +145,20 @@ public class SegmentManager : MonoBehaviour {
     {
         return pool.Dequeue();
     }
+
+    public bool RemoveFromManager(GameObject segment)
+    {
+        Destroy(segment.GetComponent<Segment>());
+        return spawned.Remove(segment);
+    }
+
+    public void AddToSegment(GameObject gom)
+    {
+        gom.AddComponent<Segment>().SetSpeed(gameSpeed * -1);
+        gom.transform.SetParent(transform);
+        spawned.Enqueue(gom);
+    }
+
 
     #endregion
 }
