@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class CheckCollision : MonoBehaviour {
     private GameObject character;
-    private GameObject particleObject;
     public ParticleSystem blood;
+    public ParticleSystem smoke;
 
     private void Start()
     {
-        particleObject = this.gameObject.transform.GetChild(0).gameObject;
-        blood = particleObject.GetComponent<ParticleSystem>();
         character = GameObject.Find("Character_rig");
     }
     void OnCollisionEnter(Collision collision)
@@ -22,6 +20,17 @@ public class CheckCollision : MonoBehaviour {
                 blood.Play();
             }
             character.SendMessage("EnableRagdoll");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.parent.tag == "Car")
+        {
+            if (smoke != null)
+            {
+                smoke.Play();
+            }
         }
     }
 }
