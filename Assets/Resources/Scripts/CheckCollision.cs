@@ -9,7 +9,7 @@ public class CheckCollision : MonoBehaviour {
 
     private void Start()
     {
-        character = GameObject.Find("Character_rig");
+        character = GameObject.FindWithTag("Player");
     }
     void OnCollisionEnter(Collision collision)
     {
