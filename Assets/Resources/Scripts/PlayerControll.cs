@@ -12,6 +12,7 @@ public class PlayerControll : MonoBehaviour {
     public GameObject jumpPoint;
     public GameManager gm;
     public PlayerToss pToss;
+    float jump;
 
 
 	void Start () {
@@ -28,7 +29,7 @@ public class PlayerControll : MonoBehaviour {
         gm.SetSpeedScenery(20 + v * 5f);
         gm.SetSpeedCars(10 + v * 5f);
 
-        height = 200 + v * 100;
+        jump = height + v * 100;
         side = rb.velocity.x * 50;
         transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
         //rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
@@ -37,25 +38,20 @@ public class PlayerControll : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Car")
+            Crash();
         //Debug.Log("Hit " + collision.collider);
-        Crash();
     }
     void Crash() {
-        RaycastHit hit;
-        Physics.Raycast(transform.position + new Vector3(0, 0.175f, 0), -Vector3.up, out hit);
         GameObject toss;
         toss = Instantiate(playerToss, jumpPoint.transform.position, Quaternion.identity);
         toss.SetActive(true);
-        toss.GetComponent<Rigidbody>().AddTorque(new Vector3(90, 0, Random.Range(-10, 10)));
         pToss = toss.GetComponent<PlayerToss>();
-        pToss.height = height;
+        pToss.height = jump;
         pToss.side = side;
-        //car.transform.parent = hit.transform;
         gm.AddCarToSegment(car);
 
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);
-
-        
     }
 }

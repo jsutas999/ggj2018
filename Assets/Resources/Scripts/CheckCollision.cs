@@ -6,6 +6,7 @@ public class CheckCollision : MonoBehaviour {
     private GameObject character;
     public ParticleSystem blood;
     public ParticleSystem smoke;
+    public PlayerToss pt;
 
     private RagdollFalling ragdollFalling;
 
@@ -18,7 +19,11 @@ public class CheckCollision : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if(ragdollFalling.hitTheGround == false)
+        if (collision.gameObject.tag == "Ground")
+            pt.RoadCollision();
+        if (collision.gameObject.tag == "Car")
+            pt.TopCollision(collision.gameObject);
+        if (ragdollFalling.hitTheGround == false)
         {
             if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Car")
             {

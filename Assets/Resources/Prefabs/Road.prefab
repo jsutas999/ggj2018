@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65800925403151670}
   m_Layer: 8
   m_Name: Road
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,8 +125,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.34, y: 0.27, z: 8.35}
-  m_Center: {x: 0, y: 0, z: 0.23}
+  m_Size: {x: 10.34, y: 0.2128748, z: 8.35}
+  m_Center: {x: 0, y: -0.028562605, z: 0.23000002}
 --- !u!114 &114195547212841866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,3 +138,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f033e0085c6f2844db97be3953cb2df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
