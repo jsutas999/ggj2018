@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] cars;
     public float gameSpeed = 0.1f;
     public float removeDistance = 100f;
-    public float spawnDistance = 9.9f;
-
+    private float spawnDistance = 9.9f;
 
     private Queue<GameObject> spawned = new Queue<GameObject>();
     private Queue<GameObject> pool = new Queue<GameObject>();
@@ -41,11 +40,11 @@ public class GameManager : MonoBehaviour {
         roadSegment.transform.position = transform.position;
         roadSegment.transform.SetParent(transform);
         RoadSegment rs = roadSegment.GetComponent<RoadSegment>();
-        rs.SetSpeed(gameSpeed * -1);     
+        rs.SetSpeed(gameSpeed * -1);
         return roadSegment;
     }
 
-   private GameObject ActivateSegmentFromPool()
+   private GameObject ActivateSegment()
    {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
         spawned.Enqueue(go);
@@ -58,6 +57,8 @@ public class GameManager : MonoBehaviour {
         rs.Clear();
         rs.AddCar(Instantiate(cars[0], go.transform));
 
+        var dist = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size.z - 0.03f; 
+        spawnDistance = dist;
         return go;
    }
 
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour {
         var dist = Vector3.Distance(transform.position, lastSpawned.transform.position);
         if(dist > spawnDistance)
         {
-            ActivateSegmentFromPool();
+            ActivateSegment();
         }
     }
 #endregion
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour {
     {
         for (int i = 19; i > 0; i--)
         {
-            GameObject g = ActivateSegmentFromPool();
+            GameObject g = ActivateSegment();
             g.GetComponent<RoadSegment>().MoveForward(-i * spawnDistance);
         }
     }

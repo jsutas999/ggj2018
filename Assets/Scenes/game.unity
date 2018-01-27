@@ -225,10 +225,9 @@ MonoBehaviour:
   - {fileID: 1974694816791592, guid: 8d76c36476ba41943aac924cbdb61371, type: 2}
   - {fileID: 1974694816791592, guid: 8d76c36476ba41943aac924cbdb61371, type: 2}
   cars:
-  - {fileID: 1791245160049130, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
+  - {fileID: 1703461713995104, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
   gameSpeed: 1
   removeDistance: 100
-  spawnDistance: 8.23
 --- !u!4 &1503480811
 Transform:
   m_ObjectHideFlags: 0
