@@ -447,6 +447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - {fileID: 1613320842279072, guid: ed14a1272de81bf499b508e9af816aab, type: 2}
+  - {fileID: 1426364373817326, guid: 505bfde596065584082c423b87eb4613, type: 2}
+  - {fileID: 1951742413593142, guid: 24025e6e1139a844fb5a00a82a7ba62b, type: 2}
 --- !u!114 &1503480813
 MonoBehaviour:
   m_ObjectHideFlags: 0
