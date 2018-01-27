@@ -11,6 +11,7 @@ public class PlayerControll : MonoBehaviour {
     public GameObject cam;
     public GameObject jumpPoint;
     public GameManager gm;
+    public PlayerToss pToss;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -25,10 +26,9 @@ public class PlayerControll : MonoBehaviour {
         // gm.SetSpeed(gm.GetSpeed() + h);
         gm.SetSpeed(15 + v * 5f);
 
-        force = rb.velocity.z * 50;
-        force = Mathf.Clamp(force, 200f, 1000f);
+        force = 150 + v * 50;
         side = rb.velocity.x * 50;
-        rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime, 0, 0));
+        rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
         if (Input.GetKeyDown(KeyCode.Space))
             Crash();
     }
@@ -37,17 +37,19 @@ public class PlayerControll : MonoBehaviour {
         Crash();
     }
     void Crash() {
+        if (Physics.Raycast(transform.position, -transform.up, 40))
+            print("There is something down of the object!");
         GameObject toss;
         toss = Instantiate(playerToss, jumpPoint.transform.position, Quaternion.identity);
         toss.SetActive(true);
-        toss.GetComponent<PlayerToss>().force = force;
-        toss.GetComponent<PlayerToss>().height = height;
-        toss.GetComponent<PlayerToss>().side = side;
+        pToss = toss.GetComponent<PlayerToss>();
+        pToss.force = force;
+        pToss.height = height;
+        pToss.side = side;
         car.transform.parent = null;
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);
 
-        if (Physics.Raycast(transform.position, -transform.up, 10))
-            print("There is something in down of the object!");
+        
     }
 }
