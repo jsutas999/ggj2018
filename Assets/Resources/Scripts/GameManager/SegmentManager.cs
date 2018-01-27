@@ -90,8 +90,8 @@ public class SegmentManager : MonoBehaviour {
         gameSpeed = speed;
         foreach(GameObject o in spawned)
         {
-            o.GetComponent<Segment>().SetSpeed(speed);
-        }
+            o.GetComponent<Segment>().SetSpeed(speed * -1);
+        } 
     }
 
     public float GetSpeed()

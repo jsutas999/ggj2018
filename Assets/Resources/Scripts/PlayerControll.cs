@@ -10,7 +10,7 @@ public class PlayerControll : MonoBehaviour {
     public float force, height, side;
     public GameObject cam;
     public GameObject jumpPoint;
-    public SegmentManager gm;
+    public GameManager gm;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -46,5 +46,8 @@ public class PlayerControll : MonoBehaviour {
         car.transform.parent = null;
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);
+
+        if (Physics.Raycast(transform.position, -transform.up, 10))
+            print("There is something in down of the object!");
     }
 }
