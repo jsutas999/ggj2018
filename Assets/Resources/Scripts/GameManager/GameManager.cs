@@ -4,142 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject[] roadSegments;
-    public GameObject[] cars;
+    public SegmentManager RoadSegmentManager;
+    public SegmentManager TerrainSegmentManager; 
 
-    public float gameSpeed = 1f;
-    public float removeDistance = 100f;
-
-    private float spawnDistance = 9.9f;
-    private Queue<GameObject> spawned = new Queue<GameObject>();
-    private Queue<GameObject> pool = new Queue<GameObject>();
-    private GameObject lastSpawned = null;
-    private RoadObjectsManager roadObjectsManager;
-
-    // Use this for initialization
-    void Start () {
-
-        roadObjectsManager = GetComponent<RoadObjectsManager>();
-
-        BuildPoolQueue();
-        BuildRoad();
+	// Use this for initialization
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateSpawned();
+		
 	}
 
 
-    private void  UpdateSpawned()
-    {
-        RemoveOutOfBoundsSegment();
-        FillSegmentGap();
-    }
-
-    private GameObject MakeRoudSegment()
-    {
-        var t = Random.Range(0, roadSegments.Length);
-        GameObject roadSegment = Instantiate(roadSegments[t],transform);
-        roadSegment.SetActive(false);
-        return roadSegment;
-    }
-
-   private GameObject ActivateSegment()
-   {
-        GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
-        spawned.Enqueue(go);
-        go.SetActive(true);
-        var bounds = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size;
-
-        if(lastSpawned != null)
-        {
-            var travel = lastSpawned.transform.localPosition.z;
-            var t = transform.transform.localPosition;
-            t.z = travel + bounds.z;
-            go.transform.localPosition = t;
-        } else
-        {
-            go.transform.localPosition = new Vector3(0, 0, -removeDistance);
-        }
-        
-
-        RoadSegment rs = go.GetComponent<RoadSegment>();
-        rs.Clear();
-        rs.AddCar(Instantiate(cars[0], go.transform));
-        rs.SetSpeed(gameSpeed * -1);
-
-
-        roadObjectsManager.AddDetailToSegment(go,bounds);
-        var dist = bounds.z - 0.03f; 
-        spawnDistance = dist;
-
-        lastSpawned = go;
-
-        return go;
-   }
-
     public void SetSpeed(float speed)
     {
-        gameSpeed = speed;
-        foreach(GameObject o in spawned)
-        {
-            o.GetComponent<RoadSegment>().SetSpeed(speed);
-        }
+        RoadSegmentManager.SetSpeed(speed);
+        TerrainSegmentManager.SetSpeed(speed);
     }
 
     public float GetSpeed()
     {
-        return this.gameSpeed;
+        return RoadSegmentManager.GetSpeed();
     }
-
-    #region Update
-
-    private void RemoveOutOfBoundsSegment()
-    {
-        var d =0f;
-        do
-        {
-            GameObject oldest = spawned.Peek();
-            var dist = Vector3.Distance(transform.position, oldest.transform.position);
-            if (dist > removeDistance)
-            {
-                pool.Enqueue(spawned.Dequeue());
-                oldest.SetActive(false);
-            }
-        } while (d > removeDistance);
-
-    }
-
-    private void FillSegmentGap()
-    {
-        var dist = Vector3.Distance(transform.position, lastSpawned.transform.position);
-        if(dist > spawnDistance)
-        {
-            ActivateSegment();
-        }
-    }
-#endregion
-
-    #region START
-
-    private void BuildPoolQueue()
-    {
-        for (int i = 0; i < 20; i++)
-        {
-            GameObject t = MakeRoudSegment();
-            pool.Enqueue(t);
-        }
-    }
-
-    private void BuildRoad()
-    {
-        GameObject g = ActivateSegment();
-        while(g.transform.localPosition.z < -20)
-        {
-            g = ActivateSegment();
-        }
-    }
-#endregion
-
 }

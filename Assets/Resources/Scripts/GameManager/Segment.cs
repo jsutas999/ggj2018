@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoadSegment : MonoBehaviour {
+public class Segment : MonoBehaviour {
 
     private float speed;
 
@@ -22,6 +22,15 @@ public class RoadSegment : MonoBehaviour {
     private void FixedUpdate()
     {
         transform.Translate(new Vector3(0, 0, speed * Time.fixedDeltaTime));
+        if(transform.localPosition.y < 0)
+        {
+          transform.Translate(new Vector3(0, -speed * Time.fixedDeltaTime * 0.08f, 0));
+        } else
+        {
+            var t = transform.localPosition;
+            t.y = 0;
+            transform.localPosition = t;
+        }
     }
 
     public void SetSpeed(float speed)
