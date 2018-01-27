@@ -71,7 +71,9 @@ public abstract class SpawningBehavior : MonoBehaviour {
 
     public virtual void FillGap(SegmentManager sm)
     {
+        if (sm.GetLastSpawned().transform.localPosition.z > 0) return;
         var dist = Mathf.Abs(sm.GetLastSpawned().transform.localPosition.z);
+
         if (dist > sm.GetDistanceToNextSpawn())
         {
             sm.ActivateSegment();
@@ -94,7 +96,15 @@ public abstract class SpawningBehavior : MonoBehaviour {
 
             GameObject oldest = sm.GetOldest();
             if (oldest == null) return;
-            var dist = Mathf.Abs(oldest.transform.localPosition.z);
+            float dist = 0f;
+              
+            if(sm.gameSpeed > 0)
+            {
+                dist = Mathf.Abs(oldest.transform.localPosition.z);
+            } else {
+                dist = oldest.transform.localPosition.z;
+            }
+
             if (dist > sm.removeDistance)
             {
                 sm.EnqueuePool((sm.DequeueSpawned()));

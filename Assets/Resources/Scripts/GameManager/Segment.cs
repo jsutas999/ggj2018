@@ -22,7 +22,7 @@ public class Segment : MonoBehaviour {
         transform.Translate(new Vector3(0, 0, speed * Time.fixedDeltaTime));
         if(transform.localPosition.y < 0)
         {
-          transform.Translate(new Vector3(0, -speed * Time.fixedDeltaTime * 0.08f, 0));
+          transform.Translate(new Vector3(0, Mathf.Abs(speed) * Time.fixedDeltaTime * 0.08f, 0));
         } else
         {
             var t = transform.localPosition;
