@@ -6,9 +6,15 @@ public class RagdollFalling : MonoBehaviour {
 
     // Use this for initialization
 
-    public Component[] rbs;
+    public Rigidbody[] rbs;
 	void Start () {
-        DisableRagdoll();
+        rbs = gameObject.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in rbs)
+        {
+            rb.isKinematic = true;
+        }
+        this.GetComponent<Animator>().enabled = true;
+        //DisableRagdoll();
     }
 	
 	// Update is called once per frame
@@ -18,10 +24,11 @@ public class RagdollFalling : MonoBehaviour {
 
     void DisableRagdoll()
     {
-        rbs = gameObject.GetComponentsInChildren<Rigidbody>();
+        //rbs = gameObject.GetComponentsInChildren<Rigidbody>();
         foreach(Rigidbody rb in rbs)
         {
             rb.isKinematic = false;
         }
+        this.GetComponent<Animator>().enabled = false;
     }
 }
