@@ -58,6 +58,11 @@ public class SegmentManager : MonoBehaviour {
         {
             o.GetComponent<Segment>().SetSpeed(speed * -1);
         } 
+
+        if(speed < 0)
+        {
+            removeDistance = 100;
+        }
     }
 
     public float GetSpeed()
@@ -155,6 +160,10 @@ public class SegmentManager : MonoBehaviour {
     public void AddToSegment(GameObject gom)
     {
         gom.AddComponent<Segment>().SetSpeed(gameSpeed * -1);
+        if (!gom.GetComponent<Rigidbody>())
+        {
+            gom.AddComponent<Rigidbody>().isKinematic = true;
+        }
         gom.transform.SetParent(transform);
         spawned.Enqueue(gom);
     }
