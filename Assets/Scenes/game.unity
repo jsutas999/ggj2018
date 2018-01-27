@@ -440,6 +440,9 @@ GameObject:
   - component: {fileID: 1503480814}
   - component: {fileID: 1503480812}
   - component: {fileID: 1503480813}
+  - component: {fileID: 1503480815}
+  - component: {fileID: 1503480817}
+  - component: {fileID: 1503480816}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -460,13 +463,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segments:
   - {fileID: 1350264713831040, guid: 8d76c36476ba41943aac924cbdb61371, type: 2}
-  obsticles:
-  - {fileID: 1459563088513798, guid: 1be574794a892214184e7019df2a03bb, type: 2}
-  - {fileID: 100000, guid: 6b972cd3045222d44a6376fd2c4c0ab6, type: 3}
+  obsticles: []
   gameSpeed: 30
   removeDistance: 400
   SpawnObjectsInMiddle: 1
   SegmentIntersectionFactor: 1
+  segmentBehavior: {fileID: 1503480815}
+  roadObjectsManager: {fileID: 1503480812}
 --- !u!4 &1503480811
 Transform:
   m_ObjectHideFlags: 0
@@ -508,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoadSegmentManager: {fileID: 1503480810}
   TerrainSegmentManager: {fileID: 1503480814}
+  CarSegmentManager: {fileID: 1503480816}
 --- !u!114 &1503480814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +530,50 @@ MonoBehaviour:
   removeDistance: 400
   SpawnObjectsInMiddle: 0
   SegmentIntersectionFactor: 0.8
+  segmentBehavior: {fileID: 1503480815}
+  roadObjectsManager: {fileID: 0}
+--- !u!114 &1503480815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1503480809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba3a480e105e7a47a5e1742d0398407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1503480816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1503480809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5294d6f0bd41d704fbbcb6216fd4023e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segments:
+  - {fileID: 1459563088513798, guid: 1be574794a892214184e7019df2a03bb, type: 2}
+  obsticles: []
+  gameSpeed: 30
+  removeDistance: 400
+  SpawnObjectsInMiddle: 0
+  SegmentIntersectionFactor: 1
+  segmentBehavior: {fileID: 1503480817}
+  roadObjectsManager: {fileID: 0}
+--- !u!114 &1503480817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1503480809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a339a7a3a7efc4c89554c401f28046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1605918342
 Prefab:
   m_ObjectHideFlags: 0

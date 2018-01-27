@@ -5,8 +5,6 @@ using UnityEngine;
 public class Segment : MonoBehaviour {
 
     private float speed;
-
-    private List<GameObject> cars = new List<GameObject>();
     private List<GameObject> obsticles = new List<GameObject>();
 
 	// Use this for initialization
@@ -44,24 +42,8 @@ public class Segment : MonoBehaviour {
 
     }
 
-    public void AddCar(GameObject c)
-    {
-        Vector3 bounds = transform.GetChild(0).GetComponent<Renderer>().bounds.size;
-        bounds.Scale(new Vector3(0.75f, 0.75f, 0.75f));
-        var dist = (bounds.x * Random.Range(0, 3) / 3) - bounds.x / 3;
-        c.transform.localPosition = new Vector3(dist, 0, 0);
-        cars.Add(c);
-    }
-
     public void Clear()
     {
-        while(cars.Count > 0)
-        {
-            GameObject o = cars[0];
-            cars.RemoveAt(0);
-            Destroy(o);
-        }
-
         while(obsticles.Count > 0)
         {
             GameObject o = obsticles[0];
