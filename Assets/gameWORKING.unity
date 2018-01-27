@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a8c727c84e095479dbae76d0881491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuel: 10
+  fuel: 1
 --- !u!54 &287006272
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8128,7 +8128,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1069995752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3ae98520b821a4fb3f27b881fcddef, type: 3}
   m_Name: 
@@ -8364,6 +8364,7 @@ MonoBehaviour:
   RoadSegmentManager: {fileID: 1505825370}
   TerrainSegmentManager: {fileID: 934857605}
   CarSegmentManager: {fileID: 742079611}
+  scoreManager: {fileID: 0}
 --- !u!1 &1505825367
 GameObject:
   m_ObjectHideFlags: 0
@@ -12792,7 +12793,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1975566057}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3ae98520b821a4fb3f27b881fcddef, type: 3}
   m_Name: 
