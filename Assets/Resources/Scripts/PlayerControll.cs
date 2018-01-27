@@ -9,10 +9,11 @@ public class PlayerControll : MonoBehaviour {
     float boost = 1;
     public bool usingCar = true;
     public GameObject car;
-    public bool crash = false;
     public GameObject playerToss;
     public float force, height;
     public GameObject cam;
+    public GameObject jumpPoint;
+    bool crash = false;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -35,16 +36,22 @@ public class PlayerControll : MonoBehaviour {
         }
         force = rb.velocity.z * 50;
         force = Mathf.Clamp(force, 200f, 1000f);
-        if (crash || Input.GetKeyDown(KeyCode.Space))
-        {
-            crash = false;
-            GameObject toss;
-            toss = Instantiate(playerToss, transform.position, Quaternion.identity);
-            toss.GetComponent<PlayerToss>().force = force;
-            toss.GetComponent<PlayerToss>().height = height;
-            car.transform.parent = null;
-            cam.GetComponent<CameraFollow>().player = toss;
-            gameObject.SetActive(false);
-        }
+        if (Input.GetKeyDown(KeyCode.Space) && !crash)
+            Crash();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!crash) Crash();
+    }
+    void Crash() {
+        crash = true;
+        GameObject toss;
+        toss = Instantiate(playerToss, jumpPoint.transform.position, Quaternion.identity);
+        toss.SetActive(true);
+        toss.GetComponent<PlayerToss>().force = force;
+        toss.GetComponent<PlayerToss>().height = height;
+        car.transform.parent = null;
+        cam.GetComponent<CameraFollow>().target = toss;
+        gameObject.SetActive(false);
     }
 }
