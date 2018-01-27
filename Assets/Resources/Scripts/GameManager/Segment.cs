@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoadSegment : MonoBehaviour {
+public class Segment : MonoBehaviour {
 
     private float speed;
 
