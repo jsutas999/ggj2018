@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour {
         roadObjectsManager = GetComponent<RoadObjectsManager>();
 
         BuildPoolQueue();
-        ActivateSegment();
-       // BuildRoad();
+        BuildRoad();
 	}
 	
 	// Update is called once per frame
@@ -61,7 +60,7 @@ public class GameManager : MonoBehaviour {
             go.transform.localPosition = t;
         } else
         {
-            go.transform.position = transform.position;
+            go.transform.localPosition = new Vector3(0, 0, -removeDistance);
         }
         
 
@@ -135,10 +134,10 @@ public class GameManager : MonoBehaviour {
 
     private void BuildRoad()
     {
-        for (int i = 19; i > 0; i--)
+        GameObject g = ActivateSegment();
+        while(g.transform.localPosition.z < -20)
         {
-            GameObject g = ActivateSegment();
-            g.GetComponent<RoadSegment>().MoveForward(-i * spawnDistance);
+            g = ActivateSegment();
         }
     }
 #endregion
