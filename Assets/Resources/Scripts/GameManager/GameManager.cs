@@ -48,13 +48,16 @@ public class GameManager : MonoBehaviour {
    private GameObject ActivateSegmentFromPool()
    {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
+        spawned.Enqueue(go);
+        lastSpawned = go;
+
         go.SetActive(true);
         go.transform.position = transform.position;
+
         RoadSegment rs = go.GetComponent<RoadSegment>();
         rs.Clear();
         rs.AddCar(Instantiate(cars[0], go.transform));
-        spawned.Enqueue(go);
-        lastSpawned = go;
+
         return go;
    }
 
