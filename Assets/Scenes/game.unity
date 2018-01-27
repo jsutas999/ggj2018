@@ -113,11 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &180495966 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1518340269101232, guid: 2981a9dc80cc9a042b8c28fed360893c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1605918342}
 --- !u!1 &287006266
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 70
   boostSpeed: 10
-  car: {fileID: 180495966}
+  car: {fileID: 0}
   playerToss: {fileID: 1769786111}
   force: 800
   height: 250
@@ -421,10 +416,11 @@ MonoBehaviour:
   segments:
   - {fileID: 1974694816791592, guid: 8d76c36476ba41943aac924cbdb61371, type: 2}
   obsticles:
-  - {fileID: 1518340269101232, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
+  - {fileID: 0}
   gameSpeed: 30
   removeDistance: 400
   SpawnObjectsInMiddle: 1
+  SegmentIntersectionFactor: 1
 --- !u!4 &1503480811
 Transform:
   m_ObjectHideFlags: 0
@@ -481,6 +477,7 @@ MonoBehaviour:
   gameSpeed: 30
   removeDistance: 400
   SpawnObjectsInMiddle: 0
+  SegmentIntersectionFactor: 0.8
 --- !u!1001 &1605918342
 Prefab:
   m_ObjectHideFlags: 0
@@ -523,6 +520,10 @@ Prefab:
     - target: {fileID: 1518340269101232, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754156647764886, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
