@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public SegmentManager RoadSegmentManager;
-    public SegmentManager TerrainSegmentManager; 
+    public SegmentManager TerrainSegmentManager;
+    public SegmentManager CarSegmentManager;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour {
     {
         RoadSegmentManager.SetSpeed(speed);
         TerrainSegmentManager.SetSpeed(speed);
+        CarSegmentManager.SetSpeed(speed);
     }
 
     public float GetSpeed()
