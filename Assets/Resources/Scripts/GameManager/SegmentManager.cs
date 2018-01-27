@@ -72,7 +72,7 @@ public class SegmentManager : MonoBehaviour {
         if(SpawnObjectsInMiddle)
         {
             rs.Clear();
-            rs.AddCar(Instantiate(obsticles[0], go.transform));
+            rs.AddCar(Instantiate(obsticles[Random.Range(0,obsticles.Length)], go.transform));
             roadObjectsManager.AddDetailToSegment(go, bounds);
         }
 
