@@ -10,7 +10,7 @@ public class PlayerControll : MonoBehaviour {
     public float force, height, side;
     public GameObject cam;
     public GameObject jumpPoint;
-    public SegmentManager gm;
+    public GameManager gm;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
