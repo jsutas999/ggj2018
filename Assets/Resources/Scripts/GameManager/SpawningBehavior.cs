@@ -31,7 +31,7 @@ public abstract class SpawningBehavior : MonoBehaviour {
             segment.transform.localPosition = new Vector3(0, -10, ChangeStartDistance (-sm.removeDistance) );
         }
 
-        segment.transform.localPosition = TransformPositio(segment.transform.localPosition);
+        segment.transform.localPosition = TransformPosition(segment.transform.localPosition);
 
         Segment rs = segment.GetComponent<Segment>();
         if (sm.SpawnObjectsInMiddle)
@@ -109,7 +109,7 @@ public abstract class SpawningBehavior : MonoBehaviour {
         return bounds;
     }
 
-    public virtual Vector3 TransformPositio(Vector3 position)
+    public virtual Vector3 TransformPosition(Vector3 position)
     {
         return position;
     }

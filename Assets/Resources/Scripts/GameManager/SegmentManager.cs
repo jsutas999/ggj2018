@@ -148,12 +148,14 @@ public class SegmentManager : MonoBehaviour {
 
     public bool RemoveFromManager(GameObject segment)
     {
+        Destroy(segment.GetComponent<Segment>());
         return spawned.Remove(segment);
     }
 
     public void AddToSegment(GameObject gom)
     {
-        gom.AddComponent<Segment>().SetSpeed(gameSpeed);
+        gom.AddComponent<Segment>().SetSpeed(gameSpeed * -1);
+        gom.transform.SetParent(transform);
         spawned.Enqueue(gom);
     }
 

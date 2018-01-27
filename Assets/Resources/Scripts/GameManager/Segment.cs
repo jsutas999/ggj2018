@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Segment : MonoBehaviour {
 
-    private float speed;
+    public float speed;
     private List<GameObject> obsticles = new List<GameObject>();
 
 	// Use this for initialization
