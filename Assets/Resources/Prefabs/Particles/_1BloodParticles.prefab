@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198885280626580316}
   - component: {fileID: 199767975804000944}
   m_Layer: 9
-  m_Name: BloodParticles
+  m_Name: _1BloodParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
