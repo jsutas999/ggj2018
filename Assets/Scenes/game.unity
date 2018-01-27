@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 287006267}
   - component: {fileID: 287006272}
   - component: {fileID: 287006268}
+  - component: {fileID: 287006269}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -447,6 +448,18 @@ MonoBehaviour:
   jumpPoint: {fileID: 872931504}
   gm: {fileID: 1503480813}
   pToss: {fileID: 1769786112}
+--- !u!114 &287006269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 287006266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a8c727c84e095479dbae76d0881491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuel: 10
 --- !u!54 &287006272
 Rigidbody:
   m_ObjectHideFlags: 0

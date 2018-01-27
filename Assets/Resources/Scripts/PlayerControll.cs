@@ -30,12 +30,12 @@ public class PlayerControll : MonoBehaviour {
         v = Input.GetAxis("Vertical");
 
         // gm.SetSpeed(gm.GetSpeed() + h);
-<<<<<<< HEAD
+
         gm.SetSpeedScenery(20 + v * 5f);
         gm.SetSpeedCars(10 + v * 5f);
 
         jump = height + v * 100;
-=======
+
         if (fb.fuel > 0)
         {
             gm.SetSpeedScenery(20 + v * 5f);
@@ -47,7 +47,7 @@ public class PlayerControll : MonoBehaviour {
         
         
         height = 200 + v * 100;
->>>>>>> 6bb917993246910b56bd078aa701d3e902a08e76
+
         side = rb.velocity.x * 50;
         transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
         //rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
