@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class RagdollFalling : MonoBehaviour {
 
-    // Use this for initialization
-    //
-    public Rigidbody[] rbs;
+    private Rigidbody[] rbs;
 	void Start () {
         rbs = gameObject.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in rbs)
         {
-            rb.isKinematic = true;
+           //rb.isKinematic = true;
         }
         this.GetComponent<Animator>().enabled = true;
         //DisableRagdoll();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    void DisableRagdoll()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("F");
+            EnableRagdoll();
+        }
+
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        EnableRagdoll();
+    }
+
+    public void EnableRagdoll()
     {
         //rbs = gameObject.GetComponentsInChildren<Rigidbody>();
         foreach(Rigidbody rb in rbs)
