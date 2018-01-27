@@ -16,4 +16,16 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+    public void SetSpeed(float speed)
+    {
+        RoadSegmentManager.SetSpeed(speed);
+        TerrainSegmentManager.SetSpeed(speed);
+    }
+
+    public float GetSpeed()
+    {
+        return RoadSegmentManager.GetSpeed();
+    }
 }
