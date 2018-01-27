@@ -24,7 +24,7 @@ public class PlayerControll : MonoBehaviour {
         v = Input.GetAxis("Vertical");
 
         // gm.SetSpeed(gm.GetSpeed() + h);
-        gm.SetSpeed(15 + v * 5f);
+        //gm.SetSpeed(15 + v * 5f);
 
         height = 150 + v * 50;
         side = rb.velocity.x * 50;
@@ -43,11 +43,13 @@ public class PlayerControll : MonoBehaviour {
         GameObject toss;
         toss = Instantiate(playerToss, jumpPoint.transform.position, Quaternion.identity);
         toss.SetActive(true);
-        //rb.AddTorque(new Vector3(5, 0, Random.Range(-1, 1)));
+        toss.GetComponent<Rigidbody>().AddTorque(new Vector3(90, 0, Random.Range(-10, 10)));
         pToss = toss.GetComponent<PlayerToss>();
         pToss.height = height;
         pToss.side = side;
-        car.transform.parent = hit.transform;
+        //car.transform.parent = hit.transform;
+        Destroy(car);
+
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);
 
