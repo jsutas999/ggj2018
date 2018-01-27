@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 70
-  boostSpeed: 10
   car: {fileID: 0}
   playerToss: {fileID: 1769786111}
   force: 800
@@ -416,7 +415,7 @@ MonoBehaviour:
   segments:
   - {fileID: 1974694816791592, guid: 8d76c36476ba41943aac924cbdb61371, type: 2}
   obsticles:
-  - {fileID: 0}
+  - {fileID: 1409258960848004, guid: 1be574794a892214184e7019df2a03bb, type: 2}
   gameSpeed: 30
   removeDistance: 400
   SpawnObjectsInMiddle: 1
