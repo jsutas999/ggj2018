@@ -12,11 +12,14 @@ public class PlayerToss : MonoBehaviour {
         rb.AddForce(new Vector3(0, height, force));
     }
     private void OnTriggerEnter(Collider other) {
-        playerControll.SetActive(true);
-        playerControll.transform.position = other.transform.position;
-        playerControll.GetComponent<PlayerControll>().car = other.gameObject;
-        other.transform.parent = playerControll.transform;
-        cam.GetComponent<CameraFollow>().target = playerControll;
-        Destroy(gameObject);
+        if (other.name == "Top Trigger")
+        {
+            playerControll.SetActive(true);
+            playerControll.transform.position = other.transform.parent.transform.position;
+            playerControll.GetComponent<PlayerControll>().car = other.transform.parent.gameObject;
+            other.transform.parent.parent = playerControll.transform;
+            cam.GetComponent<CameraFollow>().target = playerControll;
+            Destroy(gameObject);
+        }
     }
 }
