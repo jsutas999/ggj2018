@@ -113,57 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &428383357 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1338386716763196, guid: 2233db50604e7f64f8a5d7837cc720e2,
-    type: 2}
-  m_PrefabInternal: {fileID: 569012047}
---- !u!1001 &569012047
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.9607544
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.721552
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -3.6011481
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911434968037206, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1338386716763196, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-      propertyPath: m_Name
-      value: road_chunk
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 2233db50604e7f64f8a5d7837cc720e2, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1176916163
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,10 +222,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadSegments:
-  - {fileID: 428383357}
-  gameSpeed: 0.1
+  - {fileID: 1974694816791592, guid: 8d76c36476ba41943aac924cbdb61371, type: 2}
+  - {fileID: 1974694816791592, guid: 8d76c36476ba41943aac924cbdb61371, type: 2}
+  cars:
+  - {fileID: 1791245160049130, guid: 2981a9dc80cc9a042b8c28fed360893c, type: 2}
+  gameSpeed: 1
   removeDistance: 100
-  spawnDistance: 17.6
+  spawnDistance: 8.23
 --- !u!4 &1503480811
 Transform:
   m_ObjectHideFlags: 0

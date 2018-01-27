@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
-    public GameObject player;
+    public GameObject target;
 	void Start () {
 		
 	}
 	void Update () {
-        transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, target.transform.position.z);
 	}
 }
