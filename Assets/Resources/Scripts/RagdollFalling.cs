@@ -5,7 +5,7 @@ using UnityEngine;
 public class RagdollFalling : MonoBehaviour {
 
     // Use this for initialization
-
+    //
     public Rigidbody[] rbs;
 	void Start () {
         rbs = gameObject.GetComponentsInChildren<Rigidbody>();
