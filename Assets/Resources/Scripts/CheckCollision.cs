@@ -23,6 +23,7 @@ public class CheckCollision : MonoBehaviour {
             pt.RoadCollision();
         if (collision.gameObject.tag == "Car")
             pt.TopCollision(collision.gameObject);
+        if (ragdollFalling == null) return;
         if (ragdollFalling.hitTheGround == false)
         {
             if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Car")

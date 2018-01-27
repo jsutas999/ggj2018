@@ -8364,7 +8364,6 @@ MonoBehaviour:
   RoadSegmentManager: {fileID: 1505825370}
   TerrainSegmentManager: {fileID: 934857605}
   CarSegmentManager: {fileID: 742079611}
-  scoreManager: {fileID: 0}
 --- !u!1 &1505825367
 GameObject:
   m_ObjectHideFlags: 0
@@ -8760,7 +8759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 1
-  height: 20000
+  height: 1
   side: 0
   rb: {fileID: 719314503}
   playerControll: {fileID: 287006266}

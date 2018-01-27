@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour {
     public SegmentManager RoadSegmentManager;
     public SegmentManager TerrainSegmentManager;
     public SegmentManager CarSegmentManager;
-    public ScoreManager scoreManager;
 
 	// Use this for initialization
 	void Start () {
@@ -57,7 +56,6 @@ public class GameManager : MonoBehaviour {
     public void RemoveCarFromSegment(GameObject car)
     {
         CarSegmentManager.RemoveFromManager(car);
-        scoreManager.AddScoreOnCarJump();
     }
 
     public void AddCarToSegment(GameObject car)

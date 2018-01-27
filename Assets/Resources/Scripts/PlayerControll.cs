@@ -24,15 +24,12 @@ public class PlayerControll : MonoBehaviour {
         fb = transform.GetComponent<FuelBar>();
     }
 
-	void FixedUpdate () {
+    void Update () {
         float v, h;
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
         // gm.SetSpeed(gm.GetSpeed() + h);
-
-        gm.SetSpeedScenery(20 + v * 5f);
-        gm.SetSpeedCars(10 + v * 5f);
 
         jump = height + v * 100;
 
@@ -44,9 +41,6 @@ public class PlayerControll : MonoBehaviour {
         {
             //something to make car stop
         }
-        
-        
-        height = 200 + v * 100;
 
         side = rb.velocity.x * 50;
         transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
@@ -55,9 +49,7 @@ public class PlayerControll : MonoBehaviour {
             Crash();
 
         //fuel
-        fb.fuel -= 0.002f + v/700;
-        
-        Debug.Log(v);
+        fb.fuel -= (0.002f + v/700) * Time.deltaTime * 100;
     }
     private void OnCollisionEnter(Collision collision)
     {
