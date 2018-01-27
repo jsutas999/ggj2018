@@ -766,7 +766,6 @@ MonoBehaviour:
   side: 0
   playerControll: {fileID: 287006266}
   cam: {fileID: 522624714}
-  gm: {fileID: 1503480813}
 --- !u!54 &1769786113
 Rigidbody:
   m_ObjectHideFlags: 0

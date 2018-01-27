@@ -7,6 +7,7 @@ public class PlayerToss : MonoBehaviour {
     private Rigidbody rb;
     public GameObject playerControll;
     public GameObject cam;
+    public GameManager gm;
 	void Start () {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(new Vector3(side, height, force));
@@ -20,6 +21,7 @@ public class PlayerToss : MonoBehaviour {
             Destroy(other.transform.parent.GetComponent<Rigidbody>());
             other.transform.parent.parent = playerControll.transform; //set car as child of Player
             cam.GetComponent<CameraFollow>().target = playerControll;
+            gm.RemoveCarFromSegment(other.transform.parent.gameObject);
             Destroy(gameObject);
         }
     }

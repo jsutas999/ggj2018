@@ -13,6 +13,7 @@ public class PlayerControll : MonoBehaviour {
     public GameManager gm;
     public PlayerToss pToss;
 
+
 	void Start () {
         rb = GetComponent<Rigidbody>();
         car.transform.parent = transform;
@@ -48,7 +49,7 @@ public class PlayerControll : MonoBehaviour {
         pToss.height = height;
         pToss.side = side;
         //car.transform.parent = hit.transform;
-        Destroy(car);
+        gm.AddCarToSegment(car);
 
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);

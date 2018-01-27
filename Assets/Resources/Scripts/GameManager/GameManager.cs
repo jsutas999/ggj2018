@@ -56,11 +56,13 @@ public class GameManager : MonoBehaviour {
     public void RemoveCarFromSegment(GameObject car)
     {
         CarSegmentManager.RemoveFromManager(car);
+        Destroy(car.GetComponent<Segment>());
     }
 
     public void AddCarToSegment(GameObject car)
     {
         CarSegmentManager.AddToSegment(car);
+
     }
 
 }

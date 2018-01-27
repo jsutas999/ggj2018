@@ -153,6 +153,7 @@ public class SegmentManager : MonoBehaviour {
 
     public void AddToSegment(GameObject gom)
     {
+        gom.AddComponent<Segment>().SetSpeed(gameSpeed);
         spawned.Enqueue(gom);
     }
 
