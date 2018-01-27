@@ -13,17 +13,15 @@ public class SegmentManager : MonoBehaviour {
     public bool SpawnObjectsInMiddle = false;
     public float SegmentIntersectionFactor = 1f;
 
+    public SpawningBehavior segmentBehavior;
     private float spawnDistance = 9.9f;
     private Queue<GameObject> spawned = new Queue<GameObject>();
     private Queue<GameObject> pool = new Queue<GameObject>();
     private GameObject lastSpawned = null;
-    private RoadObjectsManager roadObjectsManager;
+    public RoadObjectsManager roadObjectsManager;
 
     // Use this for initialization
     void Start () {
-
-        roadObjectsManager = GetComponent<RoadObjectsManager>();
-
         BuildPoolQueue();
         BuildSegments();
 	}
@@ -42,47 +40,14 @@ public class SegmentManager : MonoBehaviour {
 
     private GameObject MakeSegment()
     {
-        var t = Random.Range(0, segments.Length);
-        GameObject roadSegment = Instantiate(segments[t],transform);
-        roadSegment.SetActive(false);
-        return roadSegment;
+        return segmentBehavior.MakeSegment(this);
     }
 
-   private GameObject ActivateSegment()
+   public GameObject ActivateSegment()
    {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeSegment();
         spawned.Enqueue(go);
-        go.SetActive(true);
-        var bounds = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size;
-
-        if(lastSpawned != null)
-        {
-            var travel = lastSpawned.transform.localPosition.z;
-            var t = transform.transform.localPosition;
-            t.z = travel + bounds.z * SegmentIntersectionFactor;
-            t.y = -10;
-            go.transform.localPosition = t;
-        } else
-        {
-            go.transform.localPosition = new Vector3(0, -10, -removeDistance);
-        }
-        
-
-        Segment rs = go.GetComponent<Segment>();
-        if(SpawnObjectsInMiddle)
-        {
-            rs.Clear();
-            rs.AddCar(Instantiate(obsticles[Random.Range(0,obsticles.Length)], go.transform));
-            roadObjectsManager.AddDetailToSegment(go, bounds);
-        }
-
-        rs.SetSpeed(gameSpeed * -1);
-
-        var dist = bounds.z - 0.03f; 
-        spawnDistance = dist;
-
-        lastSpawned = go;
-
+        segmentBehavior.ActivateSegment(go,this);
         return go;
    }
 
@@ -97,35 +62,19 @@ public class SegmentManager : MonoBehaviour {
 
     public float GetSpeed()
     {
-        return this.gameSpeed;
+        return gameSpeed;
     }
 
     #region Update
 
     private void RemoveOutOfBoundsSegment()
     {
-        var d = 0f;
-        do
-        {
-            
-            GameObject oldest = spawned.Peek();
-            var dist = Mathf.Abs(oldest.transform.localPosition.z);
-            if (dist > removeDistance)
-            {
-                pool.Enqueue(spawned.Dequeue());
-                oldest.SetActive(false);
-            }
-        } while (d > removeDistance);
-
+        segmentBehavior.RemoveOutOfBoundsSegment(this);
     }
 
     private void FillSegmentGap()
     {
-        var dist = Mathf.Abs(lastSpawned.transform.localPosition.z);
-        if(dist > spawnDistance)
-        {
-           ActivateSegment();
-        }
+        segmentBehavior.FillGap(this);
     }
 #endregion
 
@@ -142,23 +91,60 @@ public class SegmentManager : MonoBehaviour {
 
     private void BuildSegments()
     {
-        int t = 0;
-        GameObject g = ActivateSegment();
-        while(g.transform.localPosition.z < -20)
-        {
-            g = ActivateSegment();
-            if(t < 10)
-            {
-                g.GetComponent<Segment>().Clear();
-
-                t++;
-            }
-            var o = g.transform.localPosition;
-            o.y = 0;
-            g.transform.localPosition = o;
-           
-        }
+        segmentBehavior.BuildSegments(this);
     }
-#endregion
+    #endregion
 
+    #region GETTERS/SETTERs
+    public GameObject GetLastSpawned()
+    {
+        return lastSpawned;
+    }
+
+    public float GetDistanceToNextSpawn()
+    {
+        return spawnDistance;
+    }
+
+    public void SetDistanceToNextSpawn(float dist)
+    {
+        this.spawnDistance = dist;
+    }
+
+
+    public void SetLastSpawned(GameObject last)
+    {
+        lastSpawned = last;
+    }
+
+    public GameObject GetOldest()
+    {
+        if (spawned.Count > 0)
+        {
+            return spawned.Peek();
+        }
+        return null;
+    }
+
+    public void EnqueuSpawned(GameObject segment)
+    {
+        spawned.Enqueue(segment);
+    }
+
+    public GameObject DequeueSpawned()
+    {
+        return spawned.Dequeue();
+    }
+
+    public void EnqueuePool(GameObject segment)
+    {
+        pool.Enqueue(segment);
+    }
+
+    public GameObject DequeuePool()
+    {
+        return pool.Dequeue();
+    }
+
+    #endregion
 }
