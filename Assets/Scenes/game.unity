@@ -324,8 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a339a7a3a7efc4c89554c401f28046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoadWidth: 1
-  DistanceMultiplier: 1
+  RoadWidth: 6
+  DistanceMultiplier: 3
   startDistFraction: 0.33
 --- !u!4 &742079613
 Transform:
