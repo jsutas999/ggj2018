@@ -151,7 +151,7 @@ public class SegmentManager : MonoBehaviour {
         return spawned.Remove(segment);
     }
 
-    public void AddSegment(GameObject gom)
+    public void AddToSegment(GameObject gom)
     {
         spawned.Enqueue(gom);
     }
