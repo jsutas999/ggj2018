@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerControll : MonoBehaviour {
     private Rigidbody rb;
     public float moveSpeed = 1;
-    public float boostSpeed = 1;
-    float boost = 1;
     public GameObject car;
     public GameObject playerToss;
     public float force, height, side;
@@ -20,20 +18,17 @@ public class PlayerControll : MonoBehaviour {
     }
 
 	void Update () {
-        float v=0, h;
+        float v, h;
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.LeftShift))
-            boost = boostSpeed;
-        else
-            boost = 1;
 
-       // gm.SetSpeed(gm.GetSpeed() + h);
+        // gm.SetSpeed(gm.GetSpeed() + h);
+        gm.SetSpeed(15 + v * 5f);
 
         force = rb.velocity.z * 50;
         force = Mathf.Clamp(force, 200f, 1000f);
         side = rb.velocity.x * 50;
-
+        rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime, 0, 0));
         if (Input.GetKeyDown(KeyCode.Space))
             Crash();
     }
