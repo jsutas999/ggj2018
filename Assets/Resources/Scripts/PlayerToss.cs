@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerToss : MonoBehaviour {
-    public float force, height;
+    public float force, height, side;
     private Rigidbody rb;
     public GameObject playerControll;
     public GameObject cam;
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(0, height, force));
+        rb.AddForce(new Vector3(side, height, force));
     }
     private void OnTriggerEnter(Collider other) {
         if (other.name == "Top Trigger")

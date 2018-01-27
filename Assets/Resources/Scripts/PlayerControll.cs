@@ -9,7 +9,7 @@ public class PlayerControll : MonoBehaviour {
     float boost = 1;
     public GameObject car;
     public GameObject playerToss;
-    public float force, height;
+    public float force, height, side;
     public GameObject cam;
     public GameObject jumpPoint;
 
@@ -27,12 +27,15 @@ public class PlayerControll : MonoBehaviour {
         else
             boost = 1;
         rb.AddRelativeForce(new Vector3(h * moveSpeed, 0, v * moveSpeed * boost));
+
         force = rb.velocity.z * 50;
         force = Mathf.Clamp(force, 200f, 1000f);
+        side = rb.velocity.x * 50;
+
         if (Input.GetKeyDown(KeyCode.Space))
             Crash();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         Crash();
     }
@@ -42,6 +45,7 @@ public class PlayerControll : MonoBehaviour {
         toss.SetActive(true);
         toss.GetComponent<PlayerToss>().force = force;
         toss.GetComponent<PlayerToss>().height = height;
+        toss.GetComponent<PlayerToss>().side = side;
         car.transform.parent = null;
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);
