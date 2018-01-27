@@ -9,45 +9,74 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1565969356463024}
+  m_RootGameObject: {fileID: 1322212190173626}
   m_IsPrefabParent: 1
---- !u!1 &1565969356463024
+--- !u!1 &1229723087751850
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4177127857106996}
-  - component: {fileID: 33060792143386796}
-  - component: {fileID: 23733808853609696}
-  - component: {fileID: 114661530715373800}
+  - component: {fileID: 4326636411215874}
+  - component: {fileID: 33587485858790426}
+  - component: {fileID: 23646013326563606}
   m_Layer: 0
-  m_Name: road_chunk90
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4177127857106996
+--- !u!1 &1322212190173626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4693460408606332}
+  - component: {fileID: 114514252070541740}
+  m_Layer: 0
+  m_Name: road_chunk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4326636411215874
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565969356463024}
+  m_GameObject: {fileID: 1229723087751850}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.086098, y: 0.9960863, z: 1}
+  m_LocalScale: {x: 108.60982, y: 99.60863, z: 100}
   m_Children: []
+  m_Father: {fileID: 4693460408606332}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4693460408606332
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322212190173626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.56717527, y: 32.455166, z: 34.07871}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4326636411215874}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23733808853609696
+--- !u!23 &23646013326563606
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565969356463024}
+  m_GameObject: {fileID: 1229723087751850}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,9 +85,9 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 65013f0e95647844db2b6662a19851b5, type: 3}
-  - {fileID: 2100002, guid: 65013f0e95647844db2b6662a19851b5, type: 3}
-  - {fileID: 2100004, guid: 65013f0e95647844db2b6662a19851b5, type: 3}
+  - {fileID: 2100000, guid: 568d47bf98fa48642a918ab587e05f0a, type: 3}
+  - {fileID: 2100002, guid: 568d47bf98fa48642a918ab587e05f0a, type: 3}
+  - {fileID: 2100004, guid: 568d47bf98fa48642a918ab587e05f0a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,21 +107,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33060792143386796
+--- !u!33 &33587485858790426
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565969356463024}
-  m_Mesh: {fileID: 4300000, guid: 65013f0e95647844db2b6662a19851b5, type: 3}
---- !u!114 &114661530715373800
+  m_GameObject: {fileID: 1229723087751850}
+  m_Mesh: {fileID: 4300000, guid: 568d47bf98fa48642a918ab587e05f0a, type: 3}
+--- !u!114 &114514252070541740
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565969356463024}
+  m_GameObject: {fileID: 1322212190173626}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f033e0085c6f2844db97be3953cb2df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
