@@ -60,10 +60,11 @@ public class SegmentManager : MonoBehaviour {
             var travel = lastSpawned.transform.localPosition.z;
             var t = transform.transform.localPosition;
             t.z = travel + bounds.z * SegmentIntersectionFactor;
+            t.y = -10;
             go.transform.localPosition = t;
         } else
         {
-            go.transform.localPosition = new Vector3(0, 0, -removeDistance);
+            go.transform.localPosition = new Vector3(0, -10, -removeDistance);
         }
         
 
@@ -103,11 +104,12 @@ public class SegmentManager : MonoBehaviour {
 
     private void RemoveOutOfBoundsSegment()
     {
-        var d =0f;
+        var d = 0f;
         do
         {
+            
             GameObject oldest = spawned.Peek();
-            var dist = Vector3.Distance(transform.position, oldest.transform.position);
+            var dist = Mathf.Abs(oldest.transform.localPosition.z);
             if (dist > removeDistance)
             {
                 pool.Enqueue(spawned.Dequeue());
@@ -119,10 +121,10 @@ public class SegmentManager : MonoBehaviour {
 
     private void FillSegmentGap()
     {
-        var dist = Vector3.Distance(transform.position, lastSpawned.transform.position);
+        var dist = Mathf.Abs(lastSpawned.transform.localPosition.z);
         if(dist > spawnDistance)
         {
-            ActivateSegment();
+           ActivateSegment();
         }
     }
 #endregion
@@ -140,10 +142,21 @@ public class SegmentManager : MonoBehaviour {
 
     private void BuildSegments()
     {
+        int t = 0;
         GameObject g = ActivateSegment();
         while(g.transform.localPosition.z < -20)
         {
             g = ActivateSegment();
+            if(t < 10)
+            {
+                g.GetComponent<Segment>().Clear();
+
+                t++;
+            }
+            var o = g.transform.localPosition;
+            o.y = 0;
+            g.transform.localPosition = o;
+           
         }
     }
 #endregion
