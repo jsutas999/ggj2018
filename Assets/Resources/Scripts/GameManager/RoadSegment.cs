@@ -7,6 +7,7 @@ public class RoadSegment : MonoBehaviour {
     private float speed;
 
     private List<GameObject> cars = new List<GameObject>();
+    private List<GameObject> obsticles = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +47,18 @@ public class RoadSegment : MonoBehaviour {
             cars.RemoveAt(0);
             Destroy(o);
         }
+
+        while(obsticles.Count > 0)
+        {
+            GameObject o = obsticles[0];
+            obsticles.RemoveAt(0);
+            Destroy(o);
+        }
+    }
+
+    public void AddObsticle(GameObject obb)
+    {
+        obsticles.Add(obb);
     }
 
 
