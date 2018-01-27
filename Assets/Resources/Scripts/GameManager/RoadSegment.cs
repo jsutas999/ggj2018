@@ -16,7 +16,12 @@ public class RoadSegment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(new Vector3(0, 0, speed * Time.deltaTime ));
+       
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Translate(new Vector3(0, 0, speed * Time.fixedDeltaTime));
     }
 
     public void SetSpeed(float speed)

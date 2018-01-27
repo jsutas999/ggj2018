@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour {
         roadObjectsManager = GetComponent<RoadObjectsManager>();
 
         BuildPoolQueue();
-        BuildRoad();
+        ActivateSegment();
+       // BuildRoad();
 	}
 	
 	// Update is called once per frame
@@ -40,12 +41,8 @@ public class GameManager : MonoBehaviour {
     private GameObject MakeRoudSegment()
     {
         var t = Random.Range(0, roadSegments.Length);
-        GameObject roadSegment = Instantiate(roadSegments[t]);
+        GameObject roadSegment = Instantiate(roadSegments[t],transform);
         roadSegment.SetActive(false);
-        roadSegment.transform.position = transform.position;
-        roadSegment.transform.SetParent(transform);
-        RoadSegment rs = roadSegment.GetComponent<RoadSegment>();
-        rs.SetSpeed(gameSpeed * -1);
         return roadSegment;
     }
 
@@ -53,36 +50,66 @@ public class GameManager : MonoBehaviour {
    {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
         spawned.Enqueue(go);
-        lastSpawned = go;
-
         go.SetActive(true);
-        go.transform.position = transform.position;
+        var bounds = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size;
+
+        if(lastSpawned != null)
+        {
+            var travel = lastSpawned.transform.localPosition.z;
+            var t = transform.transform.localPosition;
+            t.z = travel + bounds.z;
+            go.transform.localPosition = t;
+        } else
+        {
+            go.transform.position = transform.position;
+        }
+        
 
         RoadSegment rs = go.GetComponent<RoadSegment>();
         rs.Clear();
         rs.AddCar(Instantiate(cars[0], go.transform));
+        rs.SetSpeed(gameSpeed * -1);
 
-        var bounds = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size;
 
         roadObjectsManager.AddDetailToSegment(go,bounds);
-
         var dist = bounds.z - 0.03f; 
         spawnDistance = dist;
+
+        lastSpawned = go;
+
         return go;
    }
 
+    public void SetSpeed(float speed)
+    {
+        gameSpeed = speed;
+        foreach(GameObject o in spawned)
+        {
+            o.GetComponent<RoadSegment>().SetSpeed(speed);
+        }
+    }
+
+    public float GetSpeed()
+    {
+        return this.gameSpeed;
+    }
 
     #region Update
 
     private void RemoveOutOfBoundsSegment()
     {
-        GameObject oldest = spawned.Peek();
-        var dist = Vector3.Distance(transform.position, oldest.transform.position);
-        if (dist > removeDistance)
+        var d =0f;
+        do
         {
-            pool.Enqueue(spawned.Dequeue());
-            oldest.SetActive(false);
-        }
+            GameObject oldest = spawned.Peek();
+            var dist = Vector3.Distance(transform.position, oldest.transform.position);
+            if (dist > removeDistance)
+            {
+                pool.Enqueue(spawned.Dequeue());
+                oldest.SetActive(false);
+            }
+        } while (d > removeDistance);
+
     }
 
     private void FillSegmentGap()

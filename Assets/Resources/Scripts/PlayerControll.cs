@@ -12,6 +12,7 @@ public class PlayerControll : MonoBehaviour {
     public float force, height, side;
     public GameObject cam;
     public GameObject jumpPoint;
+    public GameManager gm;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -26,7 +27,8 @@ public class PlayerControll : MonoBehaviour {
             boost = boostSpeed;
         else
             boost = 1;
-        rb.AddRelativeForce(new Vector3(h * moveSpeed, 0, v * moveSpeed * boost));
+
+       // gm.SetSpeed(gm.GetSpeed() + h);
 
         force = rb.velocity.z * 50;
         force = Mathf.Clamp(force, 200f, 1000f);
