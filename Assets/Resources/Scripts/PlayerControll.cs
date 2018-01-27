@@ -14,27 +14,50 @@ public class PlayerControll : MonoBehaviour {
     public PlayerToss pToss;
     float jump;
 
+    private FuelBar fb;
+    
+
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
         car.transform.parent = transform;
+        fb = transform.GetComponent<FuelBar>();
     }
 
-	void Update () {
+	void FixedUpdate () {
         float v, h;
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
         // gm.SetSpeed(gm.GetSpeed() + h);
+<<<<<<< HEAD
         gm.SetSpeedScenery(20 + v * 5f);
         gm.SetSpeedCars(10 + v * 5f);
 
         jump = height + v * 100;
+=======
+        if (fb.fuel > 0)
+        {
+            gm.SetSpeedScenery(20 + v * 5f);
+            gm.SetSpeedCars(10 + v * 5f);
+        }else
+        {
+            //something to make car stop
+        }
+        
+        
+        height = 200 + v * 100;
+>>>>>>> 6bb917993246910b56bd078aa701d3e902a08e76
         side = rb.velocity.x * 50;
         transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
         //rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
         if (Input.GetKeyDown(KeyCode.Space))
             Crash();
+
+        //fuel
+        fb.fuel -= 0.002f + v/700;
+        
+        Debug.Log(v);
     }
     private void OnCollisionEnter(Collision collision)
     {
