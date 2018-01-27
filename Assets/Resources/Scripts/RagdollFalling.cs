@@ -5,6 +5,10 @@ using UnityEngine;
 public class RagdollFalling : MonoBehaviour {
 
     private Rigidbody[] rbs;
+
+    public bool hitTheGround = false;
+    private bool groundIsHit = false;
+
 	void Start () {
         rbs = gameObject.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in rbs)
@@ -22,7 +26,11 @@ public class RagdollFalling : MonoBehaviour {
             Debug.Log("F");
             EnableRagdoll();
         }
-
+        if (hitTheGround == true && groundIsHit == false)
+        {
+            groundIsHit = true;
+            this.SendMessage("GameOver");
+        }
     }
 
     void OnCollisionEnter(Collision collision)

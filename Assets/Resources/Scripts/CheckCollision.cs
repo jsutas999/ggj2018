@@ -7,19 +7,31 @@ public class CheckCollision : MonoBehaviour {
     public ParticleSystem blood;
     public ParticleSystem smoke;
 
+    private RagdollFalling ragdollFalling;
+
     private void Start()
     {
+
         character = GameObject.FindWithTag("Player");
+        ragdollFalling = character.GetComponent<RagdollFalling>();
     }
+
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Car")
+        if(ragdollFalling.hitTheGround == false)
         {
-            if(blood != null)
+            if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Car")
             {
-                blood.Play();
+                if (blood != null)
+                {
+                    blood.Play();
+                }
+                character.SendMessage("EnableRagdoll");
             }
-            character.SendMessage("EnableRagdoll");
+            if (collision.gameObject.tag == "Ground")
+            {
+                ragdollFalling.hitTheGround = true;
+            }
         }
     }
 

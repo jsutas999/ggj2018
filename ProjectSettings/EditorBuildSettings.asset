@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/kiniulis_testGrounds.unity
+    guid: 1cd42f86847ff2742bb415318667523e
+  - enabled: 1
+    path: Assets/Scenes/game.unity
+    guid: 5b76c92a881324a49868b94bd685ea15
