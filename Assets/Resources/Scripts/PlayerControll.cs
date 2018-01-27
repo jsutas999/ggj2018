@@ -34,12 +34,12 @@ public class PlayerControll : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Hit " + collision.collider);
         Crash();
     }
     void Crash() {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + new Vector3(0, 0.175f, 0), -Vector3.up, out hit))
-            Debug.Log(hit);
+        Physics.Raycast(transform.position + new Vector3(0, 0.175f, 0), -Vector3.up, out hit);
         GameObject toss;
         toss = Instantiate(playerToss, jumpPoint.transform.position, Quaternion.identity);
         toss.SetActive(true);
