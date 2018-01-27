@@ -6,16 +6,21 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] roadSegments;
     public GameObject[] cars;
-    public float gameSpeed = 0.1f;
-    public float removeDistance = 100f;
-    private float spawnDistance = 9.9f;
 
+    public float gameSpeed = 1f;
+    public float removeDistance = 100f;
+
+    private float spawnDistance = 9.9f;
     private Queue<GameObject> spawned = new Queue<GameObject>();
     private Queue<GameObject> pool = new Queue<GameObject>();
     private GameObject lastSpawned = null;
+    private RoadObjectsManager roadObjectsManager;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+
+        roadObjectsManager = GetComponent<RoadObjectsManager>();
+
         BuildPoolQueue();
         BuildRoad();
 	}
@@ -57,7 +62,11 @@ public class GameManager : MonoBehaviour {
         rs.Clear();
         rs.AddCar(Instantiate(cars[0], go.transform));
 
-        var dist = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size.z - 0.03f; 
+        var bounds = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size;
+
+        roadObjectsManager.AddDetailToSegment(go,bounds);
+
+        var dist = bounds.z - 0.03f; 
         spawnDistance = dist;
         return go;
    }
