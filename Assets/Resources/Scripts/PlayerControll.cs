@@ -46,5 +46,8 @@ public class PlayerControll : MonoBehaviour {
         car.transform.parent = null;
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);
+
+        if (Physics.Raycast(transform.position, -transform.up, 10))
+            print("There is something in down of the object!");
     }
 }
