@@ -4,107 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject[] roadSegments;
-    public GameObject[] cars;
-    public float gameSpeed = 0.1f;
-    public float removeDistance = 100f;
-    private float spawnDistance = 9.9f;
-
-    private Queue<GameObject> spawned = new Queue<GameObject>();
-    private Queue<GameObject> pool = new Queue<GameObject>();
-    private GameObject lastSpawned = null;
+    public SegmentManager RoadSegmentManager;
+    public SegmentManager TerrainSegmentManager; 
 
 	// Use this for initialization
 	void Start () {
-        BuildPoolQueue();
-        BuildRoad();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateSpawned();
+		
 	}
 
 
-    private void  UpdateSpawned()
+    public void SetSpeed(float speed)
     {
-        RemoveOutOfBoundsSegment();
-        FillSegmentGap();
+        RoadSegmentManager.SetSpeed(speed);
+        TerrainSegmentManager.SetSpeed(speed);
     }
 
-    private GameObject MakeRoudSegment()
+    public float GetSpeed()
     {
-        var t = Random.Range(0, roadSegments.Length);
-        GameObject roadSegment = Instantiate(roadSegments[t]);
-        roadSegment.SetActive(false);
-        roadSegment.transform.position = transform.position;
-        roadSegment.transform.SetParent(transform);
-        RoadSegment rs = roadSegment.GetComponent<RoadSegment>();
-        rs.SetSpeed(gameSpeed * -1);
-        return roadSegment;
+        return RoadSegmentManager.GetSpeed();
     }
-
-   private GameObject ActivateSegment()
-   {
-        GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
-        spawned.Enqueue(go);
-        lastSpawned = go;
-
-        go.SetActive(true);
-        go.transform.position = transform.position;
-
-        RoadSegment rs = go.GetComponent<RoadSegment>();
-        rs.Clear();
-        rs.AddCar(Instantiate(cars[0], go.transform));
-
-        var dist = go.transform.GetChild(0).transform.GetComponent<Renderer>().bounds.size.z - 0.03f; 
-        spawnDistance = dist;
-        return go;
-   }
-
-
-    #region Update
-
-    private void RemoveOutOfBoundsSegment()
-    {
-        GameObject oldest = spawned.Peek();
-        var dist = Vector3.Distance(transform.position, oldest.transform.position);
-        if (dist > removeDistance)
-        {
-            pool.Enqueue(spawned.Dequeue());
-            oldest.SetActive(false);
-        }
-    }
-
-    private void FillSegmentGap()
-    {
-        var dist = Vector3.Distance(transform.position, lastSpawned.transform.position);
-        if(dist > spawnDistance)
-        {
-            ActivateSegment();
-        }
-    }
-#endregion
-
-    #region START
-
-    private void BuildPoolQueue()
-    {
-        for (int i = 0; i < 20; i++)
-        {
-            GameObject t = MakeRoudSegment();
-            pool.Enqueue(t);
-        }
-    }
-
-    private void BuildRoad()
-    {
-        for (int i = 19; i > 0; i--)
-        {
-            GameObject g = ActivateSegment();
-            g.GetComponent<RoadSegment>().MoveForward(-i * spawnDistance);
-        }
-    }
-#endregion
-
 }
