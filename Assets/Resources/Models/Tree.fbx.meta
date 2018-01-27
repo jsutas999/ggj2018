@@ -1,20 +1,22 @@
 fileFormatVersion: 2
-guid: 3ec0e45d96c838a4b86b0ff4e446a9db
-timeCreated: 1517052353
+guid: 0197befece098a64d8128eab45d8eacb
+timeCreated: 1517052699
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: GrassBright
-    2100002: Gravel
-    2100004: GrassDarker
-    2100006: GrassDark
-    2100008: Dirt
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Plane.001
+    100000: Icosphere
+    100002: //RootNode
+    400000: Icosphere
+    400002: //RootNode
+    2100000: Trunk
+    2100002: Material
+    2300000: Icosphere
+    2300002: //RootNode
+    3300000: Icosphere
+    3300002: //RootNode
+    4300000: Cylinder
+    4300002: Icosphere
   externalObjects: {}
   materials:
     importMaterials: 1
