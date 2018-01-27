@@ -40,15 +40,8 @@ public class GameManager : MonoBehaviour {
         roadSegment.SetActive(false);
         roadSegment.transform.position = transform.position;
         roadSegment.transform.SetParent(transform);
-
         RoadSegment rs = roadSegment.GetComponent<RoadSegment>();
-        rs.SetSpeed(gameSpeed * -1);
-
-        GameObject o = Instantiate(cars[0], roadSegment.transform);
-        var bounds = o.GetComponent<Renderer>().bounds.size;
-        o.transform.localPosition = Vector3.zero;
-        rs.AddCar(o);
-        
+        rs.SetSpeed(gameSpeed * -1);     
         return roadSegment;
     }
 
@@ -57,6 +50,9 @@ public class GameManager : MonoBehaviour {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeRoudSegment();
         go.SetActive(true);
         go.transform.position = transform.position;
+        RoadSegment rs = go.GetComponent<RoadSegment>();
+        rs.Clear();
+        rs.AddCar(Instantiate(cars[0], go.transform));
         spawned.Enqueue(go);
         lastSpawned = go;
         return go;
