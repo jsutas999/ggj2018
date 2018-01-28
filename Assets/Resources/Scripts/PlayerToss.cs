@@ -27,10 +27,13 @@ public class PlayerToss : MonoBehaviour {
     }
     public void RoadCollision()
     {
-        gameOver = true;
-        //Debug.Log("HIT ROAD");
-        gm.SetSpeedScenery(0);
-        gm.SetSpeedCars(-10);
+        if (!gameOver)
+        {
+            gameOver = true;
+            //Debug.Log("HIT ROAD");
+            gm.SetSpeedScenery(0);
+            gm.SetSpeedCars(-10);
+        }
     }
     public void TopCollision(GameObject other)
     {
