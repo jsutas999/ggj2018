@@ -8765,6 +8765,7 @@ MonoBehaviour:
   playerControll: {fileID: 287006266}
   cam: {fileID: 522624714}
   gm: {fileID: 1503480813}
+  move: 100
 --- !u!4 &1769786114
 Transform:
   m_ObjectHideFlags: 0
