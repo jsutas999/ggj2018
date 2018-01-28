@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4611395284123962}
   - component: {fileID: 54478753567522804}
   - component: {fileID: 65924228903524594}
-  m_Layer: 0
+  - component: {fileID: 114717408526182374}
+  m_Layer: 10
   m_Name: Car4Police
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,7 @@ GameObject:
   - component: {fileID: 4450872307028840}
   - component: {fileID: 33839552553023318}
   - component: {fileID: 23741472347177586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +72,7 @@ GameObject:
   - component: {fileID: 4380856053734340}
   - component: {fileID: 33911523371755354}
   - component: {fileID: 23439100323178202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +89,7 @@ GameObject:
   - component: {fileID: 4289117165567216}
   - component: {fileID: 33082589742156388}
   - component: {fileID: 23560264196273004}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +106,7 @@ GameObject:
   - component: {fileID: 4139986857665150}
   - component: {fileID: 33982394829524750}
   - component: {fileID: 23948250171009818}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +123,7 @@ GameObject:
   - component: {fileID: 4933875980442084}
   - component: {fileID: 33208424355117310}
   - component: {fileID: 23585261873719772}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +140,7 @@ GameObject:
   - component: {fileID: 4716451378464392}
   - component: {fileID: 33166584680779968}
   - component: {fileID: 23057195358350568}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,3 +554,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5235863, z: 2.0429153}
   m_Center: {x: 0, y: 0.25946236, z: 0.009487152}
+--- !u!114 &114717408526182374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261014255205108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f033e0085c6f2844db97be3953cb2df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0

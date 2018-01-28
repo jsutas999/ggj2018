@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4405,7 +4405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segments:
+  - {fileID: 1261014255205108, guid: c63e8bc02744b694691656237af96bbd, type: 2}
   - {fileID: 1459563088513798, guid: 1be574794a892214184e7019df2a03bb, type: 2}
+  - {fileID: 1458562462341534, guid: ee966df14241c8e4fa2dc6582eef7a83, type: 2}
   obsticles: []
   gameSpeed: 30
   removeDistance: 400
@@ -8620,6 +8622,7 @@ MonoBehaviour:
   RoadSegmentManager: {fileID: 1505825370}
   TerrainSegmentManager: {fileID: 934857605}
   CarSegmentManager: {fileID: 742079611}
+  scoreManager: {fileID: 0}
 --- !u!1 &1505825367
 GameObject:
   m_ObjectHideFlags: 0
@@ -8915,6 +8918,7 @@ GameObject:
   - component: {fileID: 1713174196}
   - component: {fileID: 1713174195}
   - component: {fileID: 1713174194}
+  - component: {fileID: 1713174198}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8985,6 +8989,18 @@ Transform:
   m_Father: {fileID: 522624715}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+--- !u!114 &1713174198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713174193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: d7ee6edd6d842704c883f39d26a43440, type: 2}
 --- !u!1 &1769786111
 GameObject:
   m_ObjectHideFlags: 0
