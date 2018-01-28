@@ -30,6 +30,7 @@ public class GameOverAndRetry : MonoBehaviour {
 
     void LaunchScreen()
     {
+        Debug.Log("launch screen");
         showScreen = true;
         animator = GameObject.Find("DeathScreen").GetComponent<Animator>();
         animator.SetBool("Died", showScreen);

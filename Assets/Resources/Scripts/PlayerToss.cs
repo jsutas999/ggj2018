@@ -33,6 +33,7 @@ public class PlayerToss : MonoBehaviour {
         if (!gameOver) {
             gameOver = true;
             Debug.Log("HIT ROAD");
+            SendMessage("GameOver");
             gm.SetSpeedScenery(0);
             gm.SetSpeedCars(-10);
         }

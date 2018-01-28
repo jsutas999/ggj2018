@@ -13,14 +13,14 @@ public class ScoreManager : MonoBehaviour
     public float score = 0;
     private float currCarSpeed;
     Text text;
-<<<<<<< HEAD
+
     public Text combo;
     public Text comboTimer;
     public GameObject panelObject;
 
+    bool hideCombo = false;
+
     float time = 400;
-=======
->>>>>>> 3f342a640f69e2731eb2330574dbe5e9b5a92fe3
 
     void Awake()
     {
@@ -46,7 +46,6 @@ public class ScoreManager : MonoBehaviour
 
             text.text = "Score: " + (int)score;
         }
-<<<<<<< HEAD
 
         if (hideCombo == true)
         {
@@ -56,8 +55,6 @@ public class ScoreManager : MonoBehaviour
                 HideCombo();
             }
         }
-=======
->>>>>>> 3f342a640f69e2731eb2330574dbe5e9b5a92fe3
     }
 
     public void AddScoreOnCarJump()
@@ -68,5 +65,9 @@ public class ScoreManager : MonoBehaviour
 
     } 
 
+    public void HideCombo()
+    {
+
+    }
 
 }

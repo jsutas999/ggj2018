@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
     public void RemoveCarFromSegment(GameObject car)
     {
         CarSegmentManager.RemoveFromManager(car);
-        scoreManager.AddScoreOnCarJump();
+        //scoreManager.AddScoreOnCarJump();
     }
 
     public void AddCarToSegment(GameObject car)
