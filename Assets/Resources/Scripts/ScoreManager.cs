@@ -6,8 +6,6 @@ public class ScoreManager : MonoBehaviour
 {
     private GameObject gameManagerObject;
     GameManager gameManager;
-    private GameObject ragdollFallingObject;
-    RagdollFalling ragdollFalling;
 
 
     private int multiplier = 1;
