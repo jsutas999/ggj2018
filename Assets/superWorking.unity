@@ -4435,7 +4435,7 @@ MonoBehaviour:
   gameSpeed: 30
   removeDistance: 400
   SpawnObjectsInMiddle: 0
-  SegmentIntersectionFactor: 1
+  SegmentIntersectionFactor: 3
   segmentBehavior: {fileID: 742079612}
   roadObjectsManager: {fileID: 0}
 --- !u!114 &742079612
@@ -8679,7 +8679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1377931386
 RectTransform:
   m_ObjectHideFlags: 0
