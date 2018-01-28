@@ -55,6 +55,7 @@ public class ScoreManager : MonoBehaviour
         if (hideCombo == true)
         {
             time--;
+            Debug.Log("FixedUpdate time :" + Time.deltaTime);
             if (time <= 0)
             {
                 HideCombo();
