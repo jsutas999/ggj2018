@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  car: {fileID: 0}
+  car: {fileID: 660752603}
   playerToss: {fileID: 1924047652}
   height: 5000
   side: 0
@@ -817,6 +817,11 @@ Transform:
   m_Father: {fileID: 1333857800}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &660752603 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1261014255205108, guid: c63e8bc02744b694691656237af96bbd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1830059513}
 --- !u!4 &660752604 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4611395284123962, guid: c63e8bc02744b694691656237af96bbd,
@@ -8456,7 +8461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1107212282
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8814,7 +8819,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 9e05e1f16c3ad5f459118a4d0e398b4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 9e05e1f16c3ad5f459118a4d0e398b4d, type: 3}

@@ -14,8 +14,6 @@ public class PlayerControll : MonoBehaviour {
     float jump;
 
     private FuelBar fb;
-    
-
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -28,16 +26,13 @@ public class PlayerControll : MonoBehaviour {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
-        // gm.SetSpeed(gm.GetSpeed() + h);
-
         jump = height + v * 100;
 
-        if (fb.fuel > 0)
-        {
+        if (fb.fuel > 0) {
             gm.SetSpeedScenery(20 + v * 5f);
             gm.SetSpeedCars(10 + v * 5f);
-        }else
-        {
+        }
+        else {
             //something to make car stop
         }
 
