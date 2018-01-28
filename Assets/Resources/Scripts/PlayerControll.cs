@@ -11,7 +11,6 @@ public class PlayerControll : MonoBehaviour {
     public GameObject cam;
     public GameObject jumpPoint;
     public GameManager gm;
-    public PlayerToss pToss;
     float jump;
 
     private FuelBar fb;
@@ -58,6 +57,7 @@ public class PlayerControll : MonoBehaviour {
         //Debug.Log("Hit " + collision.collider);
     }
     void Crash() {
+        PlayerToss pToss;
         GameObject toss;
         toss = Instantiate(playerToss, jumpPoint.transform.position, Quaternion.identity);
         toss.SetActive(true);

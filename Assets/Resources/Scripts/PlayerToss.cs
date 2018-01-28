@@ -44,7 +44,7 @@ public class PlayerToss : MonoBehaviour {
             other.transform.parent.transform.position = player.transform.position;
             other.transform.parent.parent = player.transform; //set car as child of Player
             player.transform.position = new Vector3(rb.position.x, player.transform.position.y, player.transform.position.z);
-            player.GetComponent<PlayerControll>().car = other;
+            player.GetComponent<PlayerControll>().car = other.transform.parent.gameObject;
             Destroy(other.transform.parent.GetComponent<Rigidbody>());
             
             cam.GetComponent<CameraFollow>().target = player;
