@@ -8,8 +8,12 @@ public class CheckCollision : MonoBehaviour {
     public PlayerToss pt;
 
     void OnCollisionEnter(Collision collision) {
-        if (blood != null)
-            blood.Play();
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Car" || collision.gameObject.tag == "Obstacle")
+        {
+            if (blood != null)
+                blood.Play();
+        }
+
         if (collision.gameObject.tag == "Ground") {
             pt.RoadCollision();
             return;
