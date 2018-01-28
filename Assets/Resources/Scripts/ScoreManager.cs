@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
     private float currCarSpeed;
     Text text;
     public Text combo;
+    public Text comboTimer;
     public GameObject panelObject;
 
     float time = 400;
@@ -55,7 +56,6 @@ public class ScoreManager : MonoBehaviour
         if (hideCombo == true)
         {
             time--;
-            Debug.Log("FixedUpdate time :" + Time.deltaTime);
             if (time <= 0)
             {
                 HideCombo();
