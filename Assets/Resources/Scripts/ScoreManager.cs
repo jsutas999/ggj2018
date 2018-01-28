@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     private GameObject gameManagerObject;
     GameManager gameManager;
-    private GameObject ragdollFallingObject;
+    public GameObject ragdollFallingObject;
     RagdollFalling ragdollFalling;
 
 
@@ -24,13 +24,12 @@ public class ScoreManager : MonoBehaviour
         gameManagerObject = GameObject.Find("GameManager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
 
-        //ragdollFallingObject = GameObject.FindGameObjectWithTag("Player");
-        //ragdollFalling = ragdollFallingObject.GetComponent<RagdollFalling>();
+        ragdollFalling = ragdollFallingObject.GetComponent<RagdollFalling>();
     }
 
     void Update()
     {
-        if(true)//ragdollFalling.hitTheGround == false)
+        if(ragdollFalling.hitTheGround == false)
         {
             currCarSpeed = gameManager.GetSpeedCars();
             score = score + currCarSpeed * Time.deltaTime;
