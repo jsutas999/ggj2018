@@ -98,12 +98,7 @@ public abstract class SpawningBehavior : MonoBehaviour {
             if (oldest == null) return;
             float dist = 0f;
               
-            if(sm.gameSpeed > 0)
-            {
-                dist = Mathf.Abs(oldest.transform.localPosition.z);
-            } else {
-                dist = oldest.transform.localPosition.z;
-            }
+            dist = Mathf.Abs(oldest.transform.localPosition.z);
 
             if (dist > sm.removeDistance)
             {

@@ -58,11 +58,6 @@ public class SegmentManager : MonoBehaviour {
         {
             o.GetComponent<Segment>().SetSpeed(speed * -1);
         } 
-
-        if(speed < 0)
-        {
-            removeDistance = 100;
-        }
     }
 
     public float GetSpeed()
