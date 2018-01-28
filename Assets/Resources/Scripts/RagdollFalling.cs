@@ -29,7 +29,7 @@ public class RagdollFalling : MonoBehaviour {
         if (hitTheGround == true && groundIsHit == false)
         {
             groundIsHit = true;
-            //this.SendMessage("GameOver");
+            this.SendMessage("GameOver");
         }
     }
 
