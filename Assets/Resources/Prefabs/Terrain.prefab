@@ -53,9 +53,10 @@ GameObject:
   - component: {fileID: 4343799053798898}
   - component: {fileID: 33378780392907210}
   - component: {fileID: 23098500404965444}
+  - component: {fileID: 64750426851673552}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1154,6 +1155,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803668695277126}
   m_Mesh: {fileID: 4300002, guid: 0197befece098a64d8128eab45d8eacb, type: 3}
+--- !u!64 &64750426851673552
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099900840160282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 3ec0e45d96c838a4b86b0ff4e446a9db, type: 3}
 --- !u!114 &114169386766178642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1165,3 +1180,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f033e0085c6f2844db97be3953cb2df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0

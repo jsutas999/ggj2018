@@ -53,7 +53,7 @@ public class PlayerControll : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Car")
+        if (collision.gameObject.tag == "Car" || collision.gameObject.tag == "Obstacle")
             Crash();
         //Debug.Log("Hit " + collision.collider);
     }

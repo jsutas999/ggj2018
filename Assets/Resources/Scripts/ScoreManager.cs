@@ -4,27 +4,23 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-
     private GameObject gameManagerObject;
     GameManager gameManager;
-    public GameObject ragdollFallingObject;
-    RagdollFalling ragdollFalling;
 
 
-    private int multiplier = 0;
-    private int currMultiplier;
-    private bool hideCombo = false;
-
-
+    private int multiplier = 1;
     public int jumpScore = 100;
     public float score = 0;
     private float currCarSpeed;
     Text text;
+<<<<<<< HEAD
     public Text combo;
     public Text comboTimer;
     public GameObject panelObject;
 
     float time = 400;
+=======
+>>>>>>> 3f342a640f69e2731eb2330574dbe5e9b5a92fe3
 
     void Awake()
     {
@@ -34,15 +30,13 @@ public class ScoreManager : MonoBehaviour
         gameManagerObject = GameObject.Find("GameManager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
 
-        ragdollFalling = ragdollFallingObject.GetComponent<RagdollFalling>();
-
-        panelObject.SetActive(false);
-
+        //ragdollFallingObject = GameObject.FindGameObjectWithTag("Player");
+        //ragdollFalling = ragdollFallingObject.GetComponent<RagdollFalling>();
     }
 
     void Update()
     {
-        if(ragdollFalling.hitTheGround == false)
+        if(true)//ragdollFalling.hitTheGround == false)
         {
             currCarSpeed = gameManager.GetSpeedCars();
             score = score + currCarSpeed * Time.deltaTime;
@@ -52,6 +46,7 @@ public class ScoreManager : MonoBehaviour
 
             text.text = "Score: " + (int)score;
         }
+<<<<<<< HEAD
 
         if (hideCombo == true)
         {
@@ -61,28 +56,17 @@ public class ScoreManager : MonoBehaviour
                 HideCombo();
             }
         }
+=======
+>>>>>>> 3f342a640f69e2731eb2330574dbe5e9b5a92fe3
     }
 
     public void AddScoreOnCarJump()
     {
+        score = score + jumpScore;
         multiplier++;
-        currMultiplier = multiplier;
+        text.text = "Score: " + (int)score;
 
-        score = score + jumpScore*multiplier;
+    } 
 
-        if (multiplier >= 2)
-        {
-            panelObject.SetActive(true);
-            combo.text = "Combo: x" + multiplier;
-            hideCombo = true;
-        }
-    }
-    
-    void HideCombo()
-    {
-        multiplier = 0;
-        hideCombo = false;
-        time = 400;
-        panelObject.SetActive(false);
-    }
+
 }
