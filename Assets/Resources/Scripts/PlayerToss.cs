@@ -40,6 +40,7 @@ public class PlayerToss : MonoBehaviour {
     }
     public void TopTrigger(GameObject other) {
         if (!gameOver) {
+            other.transform.parent.GetComponentInChildren<ParticleSystem>().Play();
             player.SetActive(true);
             other.transform.parent.transform.position = player.transform.position;
             other.transform.parent.parent = player.transform; //set car as child of Player
@@ -49,6 +50,7 @@ public class PlayerToss : MonoBehaviour {
             
             cam.GetComponent<CameraFollow>().target = player;
             gm.RemoveCarFromSegment(other.transform.parent.gameObject);
+            Destroy(other);
             Destroy(gameObject);
         }
     }

@@ -4,70 +4,27 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-    private GameObject gameManagerObject;
-    GameManager gameManager;
-
+    private GameManager gameManager;
 
     private int multiplier = 1;
-    public int jumpScore = 100;
-    public float score = 0;
-    private float currCarSpeed;
-    Text text;
+    private float score = 0;
+    private float carSpeed;
+    public Text scoreText;
 
-    public Text combo;
-    public Text comboTimer;
-    public GameObject panelObject;
 
-    bool hideCombo = false;
-
-    float time = 400;
-
-    void Awake()
+    void Start()
     {
-        text = GetComponent<Text>();
-        score = 0;
-
-        gameManagerObject = GameObject.Find("GameManager");
-        gameManager = gameManagerObject.GetComponent<GameManager>();
-
-        //ragdollFallingObject = GameObject.FindGameObjectWithTag("Player");
-        //ragdollFalling = ragdollFallingObject.GetComponent<RagdollFalling>();
+        gameManager = GetComponent<GameManager>();
     }
 
     void Update()
     {
-        if(true)//ragdollFalling.hitTheGround == false)
+        carSpeed = gameManager.GetSpeedScenery();
+        if (true)
         {
-            currCarSpeed = gameManager.GetSpeedCars();
-            score = score + currCarSpeed * Time.deltaTime;
-
-            //Combo on jumping to another car
-            
-
-            text.text = "Score: " + (int)score;
-        }
-
-        if (hideCombo == true)
-        {
-            time--;
-            if (time <= 0)
-            {
-                HideCombo();
-            }
+            score += carSpeed * multiplier / 20f * Time.deltaTime; //driveSpeed
+            //Debug.Log(score);
+            scoreText.text = "" + Mathf.Floor(score);
         }
     }
-
-    public void AddScoreOnCarJump()
-    {
-        score = score + jumpScore;
-        multiplier++;
-        text.text = "Score: " + (int)score;
-
-    } 
-
-    public void HideCombo()
-    {
-
-    }
-
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerControll : MonoBehaviour {
     private Rigidbody rb;
     public float moveSpeed = 1;
+    public float height, side;
+    public float driveSpeed = 20;
+    public float fuelUse;
     public GameObject car;
     public GameObject playerToss;
-    public float height, side;
     public GameObject cam;
     public GameObject jumpPoint;
     public GameManager gm;
@@ -22,33 +24,34 @@ public class PlayerControll : MonoBehaviour {
     }
 
     void Update () {
-        float v, h;
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-
-        jump = height + v * 100;
-
+        float v=0, h=0;
         if (fb.fuel > 0) {
-            gm.SetSpeedScenery(20 + v * 5f);
-            gm.SetSpeedCars(10 + v * 5f);
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
+            gm.SetSpeedScenery(driveSpeed + v * 5f);
+            gm.SetSpeedCars(driveSpeed - 10f + v * 5f);
         }
         else {
-            //something to make car stop
+            driveSpeed = 0;
+            gm.SetSpeedScenery(0);
+            gm.SetSpeedCars(-10);
         }
+        jump = (height + v * 1) * 1000;
 
+
+        //transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
+        rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
         side = rb.velocity.x * 50;
-        transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
-        //rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
-        if (Input.GetKeyDown(KeyCode.Space))
-            Crash();
+        if (Input.GetKeyDown(KeyCode.Space)) Crash(); 
 
         //fuel
-        fb.fuel -= (0.002f + v/700) * Time.deltaTime * 100;
+        fb.fuel -= (0.002f + v/700) * Time.deltaTime * fuelUse;
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Car" || collision.gameObject.tag == "Obstacle")
-            Crash();
+            if (fb.fuel > 0)
+                Crash();
         //Debug.Log("Hit " + collision.collider);
     }
     void Crash() {
@@ -60,6 +63,7 @@ public class PlayerControll : MonoBehaviour {
         pToss.height = jump;
         pToss.side = side;
         gm.AddCarToSegment(car);
+        fb.fuel = 1f;
 
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);

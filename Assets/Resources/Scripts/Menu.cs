@@ -6,12 +6,8 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("game", LoadSceneMode.Single);
-        }
+            SceneManager.LoadScene("finalGame", LoadSceneMode.Single);
         if(Input.GetKeyDown(KeyCode.Escape))
-        {
             Application.Quit();
-        }
     }
 }
