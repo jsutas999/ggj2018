@@ -6,9 +6,8 @@ public class PlayerToss : MonoBehaviour {
     public float force, height, side;
     public Rigidbody rb;
     public GameObject player;
-    public GameObject cam;
     public GameManager gm;
-    bool gameOver = false;
+    bool gameOver = false, triggered = false;
     public float move;
     float v, h;
     private Rigidbody[] rbs;
@@ -32,26 +31,20 @@ public class PlayerToss : MonoBehaviour {
         EnableRagdoll();
         if (!gameOver) {
             gameOver = true;
-            Debug.Log("HIT ROAD");
+            //Debug.Log("HIT ROAD");
             SendMessage("GameOver");
             gm.SetSpeedScenery(0); //stop
             gm.SetSpeedCars(-10);
         }
     }
     public void TopTrigger(GameObject other) {
-        if (!gameOver) {
-            other.transform.parent.GetComponentInChildren<ParticleSystem>().Play();
+        if (!gameOver && !triggered) {
+            triggered = true;
             player.SetActive(true);
-            other.transform.parent.transform.position = player.transform.position;
-            other.transform.parent.parent = player.transform; //set car as child of Player
-            player.transform.position = new Vector3(rb.position.x, player.transform.position.y, player.transform.position.z);
-            player.GetComponent<PlayerControll>().car = other.transform.parent.gameObject;
-            Destroy(other.transform.parent.GetComponent<Rigidbody>());
-            
-            cam.GetComponent<CameraFollow>().target = player;
-            gm.RemoveCarFromSegment(other.transform.parent.gameObject);
-            Destroy(other);
-            Destroy(gameObject);
+            player.GetComponent<PlayerControll>().Enter(other.transform.parent.gameObject);
+            player.transform.position = new Vector3(rb.position.x, player.transform.position.y, player.transform.position.z); //move player to the x of ragdoll
+            Destroy(other); //Destroy car trigger
+            Destroy(gameObject); //Destroy ragdoll
         }
     }
     public void EnableRagdoll() {

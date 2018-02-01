@@ -13,29 +13,22 @@ public class PlayerControll : MonoBehaviour {
     public GameObject cam;
     public GameObject jumpPoint;
     public GameManager gm;
+    public ScoreManager score;
     float jump;
-
-    private FuelBar fb;
+    bool crashed = false;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
         car.transform.parent = transform;
-        fb = transform.GetComponent<FuelBar>();
     }
 
     void Update () {
         float v=0, h=0;
-        if (fb.fuel > 0) {
-            h = Input.GetAxis("Horizontal");
-            v = Input.GetAxis("Vertical");
-            gm.SetSpeedScenery(driveSpeed + v * 5f);
-            gm.SetSpeedCars(driveSpeed - 10f + v * 5f);
-        }
-        else {
-            driveSpeed = 0;
-            gm.SetSpeedScenery(0);
-            gm.SetSpeedCars(-10);
-        }
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
+        gm.SetSpeedScenery(driveSpeed + v * 5f);
+        gm.SetSpeedCars(driveSpeed - 10f + v * 5f);
+
         jump = (height + v * 1) * 1000;
 
 
@@ -44,17 +37,17 @@ public class PlayerControll : MonoBehaviour {
         side = rb.velocity.x * 50;
         if (Input.GetKeyDown(KeyCode.Space)) Crash(); 
 
-        //fuel
-        fb.fuel -= (0.002f + v/700) * Time.deltaTime * fuelUse;
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Car" || collision.gameObject.tag == "Obstacle")
-            if (fb.fuel > 0)
+        if (!crashed)
+            if (collision.gameObject.tag == "Car" || collision.gameObject.tag == "Obstacle")
                 Crash();
         //Debug.Log("Hit " + collision.collider);
     }
     void Crash() {
+        score.CrashCar();
+        crashed = true;
         PlayerToss pToss;
         GameObject toss;
         toss = Instantiate(playerToss, jumpPoint.transform.position, Quaternion.identity);
@@ -63,9 +56,21 @@ public class PlayerControll : MonoBehaviour {
         pToss.height = jump;
         pToss.side = side;
         gm.AddCarToSegment(car);
-        fb.fuel = 1f;
 
         cam.GetComponent<CameraFollow>().target = toss;
         gameObject.SetActive(false);
+    }
+    public void Enter(GameObject newCar)
+    {
+        rb.velocity = Vector3.zero;
+        score.EnterCar();
+        crashed = false;
+        car = newCar;
+        car.GetComponentInChildren<ParticleSystem>().Play();
+        car.transform.position = transform.position;
+        car.transform.parent = transform; //set new car as child of Player
+        Destroy(car.GetComponent<Rigidbody>());
+        cam.GetComponent<CameraFollow>().target = this.gameObject;
+        gm.RemoveCarFromSegment(car);
     }
 }
