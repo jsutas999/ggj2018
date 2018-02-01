@@ -7,7 +7,5 @@ public class Menu : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
             SceneManager.LoadScene("finalGame", LoadSceneMode.Single);
-        if(Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
     }
 }

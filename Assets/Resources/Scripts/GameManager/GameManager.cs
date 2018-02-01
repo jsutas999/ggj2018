@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour {
 
     public ScoreManager scoreManager;
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
     // Depricated
     public void SetSpeed(float speed)
     {

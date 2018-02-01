@@ -9,11 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/GameMenu.unity
     guid: 341170906af33e3409ba46d42ec8e3af
   - enabled: 1
-    path: Assets/finalGame.unity
+    path: Assets/Scenes/finalGame.unity
     guid: 98ecb31f99088444bae38fdcf7c6ff94
-  - enabled: 0
-    path: Assets/Scenes/game.unity
-    guid: 5b76c92a881324a49868b94bd685ea15
-  - enabled: 0
-    path: Assets/Scenes/kiniulis_testGrounds.unity
-    guid: 1cd42f86847ff2742bb415318667523e
