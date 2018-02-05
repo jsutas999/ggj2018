@@ -17,7 +17,7 @@ public class GameOverAndRetry : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && showScreen == true)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1")) && showScreen == true)
         {
             SceneManager.LoadScene(currScene.name, LoadSceneMode.Single);
         }

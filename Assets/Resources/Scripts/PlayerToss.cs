@@ -21,6 +21,17 @@ public class PlayerToss : MonoBehaviour {
     {
         v = Input.GetAxis("Vertical");
         h = Input.GetAxis("Horizontal");
+        if (Input.GetButton("Fire1"))
+        {
+            if (Input.mousePosition.x < Screen.width / 2)
+                h = -1;
+            else
+                h = 1;
+            if (Input.mousePosition.y < Screen.height / 2)
+                v = -1;
+            else
+                v = 1;
+        }
         rb.AddForce(new Vector3(h * move, 0, 0));
         if (!gameOver) {
             gm.SetSpeedScenery(20 + v * 5f);

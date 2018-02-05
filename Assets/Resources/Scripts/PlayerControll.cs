@@ -26,6 +26,12 @@ public class PlayerControll : MonoBehaviour {
         float v=0, h=0;
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
+
+        if (Input.GetButton("Fire1"))
+        {
+            h = Input.mousePosition.x / Screen.width * 2 - 1;
+            v = Input.mousePosition.y / Screen.height * 2 - 1;
+        }
         gm.SetSpeedScenery(driveSpeed + v * 5f);
         gm.SetSpeedCars(driveSpeed - 10f + v * 5f);
 
@@ -35,10 +41,11 @@ public class PlayerControll : MonoBehaviour {
         //transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
         rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
         side = rb.velocity.x * 50;
+
         if (Input.GetKeyDown(KeyCode.Space)) Crash(); 
 
     }
-    private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
     {
         if (!crashed)
             if (collision.gameObject.tag == "Car" || collision.gameObject.tag == "Obstacle")

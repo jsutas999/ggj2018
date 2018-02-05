@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour {
             multiplier = 1;
 
         if (true) { //Update UI
-            scoreText.text = "" + Mathf.Floor(score);
+            scoreText.text = "" + Input.gyro.attitude;//Mathf.Floor(score);
             multText.text = "x" + multiplier;
             multImage.fillAmount = timer / time;
         }
