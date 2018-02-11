@@ -52,7 +52,82 @@ ModelImporter:
     4300006: Cylinder.001
     4300008: Cylinder.003
     4300010: Cylinder.002
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Antena
+    second: {fileID: 2100000, guid: 353dc4c6ff6bed2479649b53c2d3c31e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BackLight
+    second: {fileID: 2100000, guid: 4c4f45d7fc4765c4f992e6ae4d84af5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: b19bcd291b49852468dd997345d00f02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bumper
+    second: {fileID: 2100000, guid: dab89b3be01e6b74080bc65e5498478d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Front
+    second: {fileID: 2100000, guid: 3cf6ae9ed0b41284593ed82ffa2fdbd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrontLight
+    second: {fileID: 2100000, guid: 081eba8b508f99a4fbf9f0460e360ef5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: c3df0da37ee018643bd2f40862b92e61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rim
+    second: {fileID: 2100000, guid: 121c54176b10ec148ae61313b0011f52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rim.001
+    second: {fileID: 2100000, guid: 92ccae60f2a2ec045804e04cc5458ceb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rim.002
+    second: {fileID: 2100000, guid: 898122876692e804ba184e4bd796fcbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rim.003
+    second: {fileID: 2100000, guid: 2ef3bca96c8937a43a5e5f354629ac27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel
+    second: {fileID: 2100000, guid: e9ae6dd0307c67e489d1148fe3250ab9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel.001
+    second: {fileID: 2100000, guid: 2ece598daf7e0274c95e03f4cc9bde24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel.002
+    second: {fileID: 2100000, guid: d39136f5b619dce498ebc025a4db59e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel.003
+    second: {fileID: 2100000, guid: ded8c2008be25924096da59078ab34ff, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

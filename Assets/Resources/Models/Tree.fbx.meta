@@ -17,7 +17,17 @@ ModelImporter:
     3300002: //RootNode
     4300000: Cylinder
     4300002: Icosphere
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 1c55ee0cf5f291b45a43f1e9df88f5e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trunk
+    second: {fileID: 2100000, guid: 3561ac9c867b5d04a81d4de58e68b233, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

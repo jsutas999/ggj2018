@@ -17,13 +17,16 @@ public class PlayerControll : MonoBehaviour {
     float jump;
     bool crashed = false;
 
-	void Start () {
+    float v = 0, h = 0;
+    bool jumpPressed = false;
+
+    void Start () {
         rb = GetComponent<Rigidbody>();
         car.transform.parent = transform;
     }
 
-    void Update () {
-        float v=0, h=0;
+    private void Update()
+    {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
@@ -32,17 +35,27 @@ public class PlayerControll : MonoBehaviour {
             h = Input.mousePosition.x / Screen.width * 2 - 1;
             v = Input.mousePosition.y / Screen.height * 2 - 1;
         }
+
+        jumpPressed = Input.GetKeyDown(KeyCode.Space);
+    }
+
+    void FixedUpdate () {
+        
         gm.SetSpeedScenery(driveSpeed + v * 5f);
         gm.SetSpeedCars(driveSpeed - 10f + v * 5f);
 
         jump = (height + v * 1) * 1000;
 
-
         //transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
-        rb.AddForce(new Vector3(h * moveSpeed * Time.deltaTime * 100, 0, 0));
+        rb.AddForce(new Vector3(h * moveSpeed * Time.fixedDeltaTime * 100, 0, 0));
         side = rb.velocity.x * 50;
 
-        if (Input.GetKeyDown(KeyCode.Space)) Crash(); 
+        if (jumpPressed) {
+            jumpPressed = false;
+            Crash();
+        }
+      
+        v = h = 0f;
 
     }
         private void OnCollisionEnter(Collision collision)

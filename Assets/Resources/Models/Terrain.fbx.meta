@@ -15,7 +15,32 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Plane.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dirt
+    second: {fileID: 2100000, guid: 10c3a6ec4a3b2d040bebcb999e5f26c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrassBright
+    second: {fileID: 2100000, guid: 2b71590f01423ed468eedd29ed1147ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrassDark
+    second: {fileID: 2100000, guid: b394453d3d2373840bb10f89340adea8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrassDarker
+    second: {fileID: 2100000, guid: a9eef66c2ca338140a9a029aed6cb3c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gravel
+    second: {fileID: 2100000, guid: 8e7da6e37542f42479c65116ccb05448, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
