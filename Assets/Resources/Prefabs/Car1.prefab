@@ -137,8 +137,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4272544002271250}
-  - component: {fileID: 198869731048169540}
-  - component: {fileID: 199233067658514496}
+  - component: {fileID: 198656270164559524}
+  - component: {fileID: 199703577842623824}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459563088513798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.025675, y: -3.146035, z: -5.61711}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4605101129383382}
@@ -646,7 +646,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e7a1092bf9ccfe84dbff9cea1e57b70a, type: 2}
   - {fileID: 2100000, guid: 898ba8526cd011148a0f94999cdf544f, type: 2}
   - {fileID: 2100000, guid: 203ec58227c78bc4fa2b551956acb7d7, type: 2}
---- !u!198 &198869731048169540
+--- !u!198 &198656270164559524
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -706,7 +706,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1183649948
+  randomSeed: -89495314
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4052,7 +4052,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199233067658514496
+--- !u!199 &199703577842623824
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -4067,8 +4067,8 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19493e682f88e434bbbb1d3a42ad7eda, type: 2}
-  - {fileID: 2100000, guid: 19493e682f88e434bbbb1d3a42ad7eda, type: 2}
+  - {fileID: 2100000, guid: baf1ccb1cc45ff245a89edd59a281f0d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

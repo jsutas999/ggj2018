@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
-
 
 public class ScoreManager : MonoBehaviour {
     private GameManager gameManager;
@@ -9,16 +9,22 @@ public class ScoreManager : MonoBehaviour {
     private int multiplier = 1;
     private float score = 0;
     private float carSpeed;
-    public Text scoreText, multText;
+    public Text scoreText, multText, coinText;
     public Image multImage;
     public float time = 3;
     private float timer;
     private bool airtime = false;
+    private int currentCoins = 0;
+    public GameObject DeathScreen;
 
+    bool showScreen = false;
+
+    public Scene currScene;
 
     void Start() {
         gameManager = GetComponent<GameManager>();
         timer = time;
+        currScene = SceneManager.GetActiveScene();
     }
 
     void Update() {
@@ -33,7 +39,25 @@ public class ScoreManager : MonoBehaviour {
             scoreText.text = "" + Mathf.Floor(score);
             multText.text = "x" + multiplier;
             multImage.fillAmount = timer / time;
+            coinText.text = "" + currentCoins;
         }
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1")) && showScreen == true)
+        {
+            SceneManager.LoadScene(currScene.name, LoadSceneMode.Single);
+        }
+    }
+    public void GameOver() {
+        Invoke("LaunchScreen", 1);
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + currentCoins);
+    }
+
+    void LaunchScreen() {
+        //Debug.Log("launch screen");
+        showScreen = true;
+        DeathScreen.GetComponent<Animator>().SetBool("Died", showScreen); ;
+    }
+    public void CollectCoin(int coin) {
+        currentCoins += coin;
     }
     public void EnterCar() {
         airtime = false;
@@ -41,7 +65,7 @@ public class ScoreManager : MonoBehaviour {
         float points = 10f * multiplier;
         score += points;
         multiplier++;
-        Debug.Log("Enter Car! Add points: " + points);
+        //Debug.Log("Enter Car! Add points: " + points);
     }
     public void HitAnimal()
     {

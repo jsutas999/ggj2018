@@ -38,14 +38,14 @@ public class PlayerToss : MonoBehaviour {
             gm.SetSpeedCars(10 + v * 5f);
         }
     }
-    public void RoadCollision() {
+    public void RoadCollision() { // Game Over
         EnableRagdoll();
         if (!gameOver) {
             gameOver = true;
             //Debug.Log("HIT ROAD");
-            SendMessage("GameOver");
             gm.SetSpeedScenery(0); //stop
             gm.SetSpeedCars(-10);
+            gm.GameOver();
         }
     }
     public void TopTrigger(GameObject other) {

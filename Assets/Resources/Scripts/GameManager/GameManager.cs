@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
 
     public ScoreManager scoreManager;
 
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -23,14 +22,14 @@ public class GameManager : MonoBehaviour {
         TerrainSegmentManager.SetSpeed(speed);
         CarSegmentManager.SetSpeed(speed);
     }
-    void OnGUI()
+    /*void OnGUI()
     {
         GUI.Label(new Rect(20, 20, 300, 20), "" + Input.gyro.attitude);
         GUI.Label(new Rect(20, 40, 300, 20), "Update: " + Mathf.Floor(1 /Time.deltaTime));
         GUI.Label(new Rect(20, 60, 300, 20), "FixedUpdate: " + Mathf.Floor(1/Time.fixedDeltaTime));
-    }
-        // Depricated
-        public float GetSpeed()
+    }*/
+    // Depricated
+    public float GetSpeed()
     {
         return RoadSegmentManager.GetSpeed();
     }
@@ -66,6 +65,8 @@ public class GameManager : MonoBehaviour {
     {
         CarSegmentManager.AddToSegment(car);
     }
-
-
+    public void GameOver()
+    {
+        scoreManager.GameOver();
+    }
 }

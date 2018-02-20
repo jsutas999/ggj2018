@@ -25,18 +25,18 @@ public class PlayerControll : MonoBehaviour {
         car.transform.parent = transform;
     }
 
-    private void Update()
-    {
+    private void Update() {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
-        if (Input.GetButton("Fire1"))
-        {
+        if (Input.GetButton("Fire1")) {
             h = Input.mousePosition.x / Screen.width * 2 - 1;
             v = Input.mousePosition.y / Screen.height * 2 - 1;
         }
 
         jumpPressed = Input.GetKeyDown(KeyCode.Space);
+        if (Input.GetKeyDown(KeyCode.J))
+            score.CollectCoin(1);
     }
 
     void FixedUpdate () {
@@ -44,7 +44,7 @@ public class PlayerControll : MonoBehaviour {
         gm.SetSpeedScenery(driveSpeed + v * 5f);
         gm.SetSpeedCars(driveSpeed - 10f + v * 5f);
 
-        jump = (height + v * 1) * 1000;
+        jump = (height + v) * 1000;
 
         //transform.position += new Vector3(h * Time.deltaTime * moveSpeed, 0, 0);
         rb.AddForce(new Vector3(h * moveSpeed * Time.fixedDeltaTime * 100, 0, 0));
