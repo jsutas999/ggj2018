@@ -5,20 +5,25 @@ using UnityEngine;
 public class CheckCollision : MonoBehaviour {
     public ParticleSystem blood;
     public PlayerToss pt;
+    bool gameover = false;
 
     void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Car" || collision.gameObject.tag == "Obstacle")
-        {
-            if (blood != null)
-                blood.Play();
-        }
-
-        if (collision.gameObject.tag == "Ground") {
-            pt.RoadCollision();
-        }
+        Hit(false, collision.gameObject);
     }
-
     private void OnTriggerEnter(Collider other) { //Top Trigger
-        pt.TopTrigger(other.gameObject);
+        Hit(true, other.gameObject);
+    }
+    private void Hit(bool trigger, GameObject obj) {
+        if (trigger && !gameover)
+            pt.Collision(trigger, obj);
+        else
+            if (obj.tag == "Ground" || obj.tag == "Car" || obj.tag == "Obstacle") {
+                if (blood != null)
+                    blood.Play();
+                if (obj.tag == "Ground") {
+                    pt.Collision(false, obj);
+                    gameover = true;
+                }
+            }
     }
 }

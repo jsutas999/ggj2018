@@ -6,28 +6,27 @@ public class Segment : MonoBehaviour {
 
     public float speed;
     private List<GameObject> obsticles = new List<GameObject>();
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-       
-    }
+    public AnimationCurve curve;
+    public float curveDistance, curveMultiplier;
+    float curveX = 0, curveY = 0;
+    public bool rotate = false;
 
     private void FixedUpdate()
     {
         transform.Translate(new Vector3(0, 0, speed * Time.fixedDeltaTime));
-        if(transform.localPosition.y < 0)
-        {
-          transform.Translate(new Vector3(0, Mathf.Abs(speed) * Time.fixedDeltaTime * 0.08f, 0));
-        } else
-        {
-            var t = transform.localPosition;
-            t.y = 0;
-            transform.localPosition = t;
+        if (Mathf.Abs(transform.localPosition.z) < curveDistance) {
+            curveX = Mathf.Abs(transform.localPosition.z / curveDistance);
+            curveY = curve.Evaluate(curveX);
+            var trans = transform.localPosition;
+            trans.y = (curveY - 1) * curveMultiplier;
+            transform.localPosition = trans;
+            //Debug.Log(curveY);
+            //if (rotate) transform.localRotation = Quaternion.Euler(Mathf.Atan2(1-curveY, 1 - curveX) * Mathf.Rad2Deg / 4f, 0, 0);
+        }
+        else {
+            var trans = transform.localPosition;
+            trans.y = 0;
+            transform.localPosition = trans;
         }
     }
 

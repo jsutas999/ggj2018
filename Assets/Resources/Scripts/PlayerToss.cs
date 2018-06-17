@@ -17,12 +17,10 @@ public class PlayerToss : MonoBehaviour {
         rb.AddTorque(new Vector3(10000, 0, Random.Range(-10, 10)));
         rbs = gameObject.GetComponentsInChildren<Rigidbody>();
     }
-    private void Update()
-    {
+    private void Update() {
         v = Input.GetAxis("Vertical");
         h = Input.GetAxis("Horizontal");
-        if (Input.GetButton("Fire1"))
-        {
+        if (Input.GetButton("Fire1")) {
             if (Input.mousePosition.x < Screen.width / 2)
                 h = -1;
             else
@@ -32,29 +30,30 @@ public class PlayerToss : MonoBehaviour {
             else
                 v = 1;
         }
-        rb.AddForce(new Vector3(h * move, 0, 0));
+
         if (!gameOver) {
             gm.SetSpeedScenery(20 + v * 5f);
             gm.SetSpeedCars(10 + v * 5f);
         }
     }
-    public void RoadCollision() { // Game Over
-        EnableRagdoll();
+    private void FixedUpdate() {
         if (!gameOver) {
-            gameOver = true;
-            //Debug.Log("HIT ROAD");
-            gm.SetSpeedScenery(0); //stop
-            gm.SetSpeedCars(-10);
-            gm.GameOver();
+            rb.AddForce(new Vector3(h * move, 0, 0));
         }
     }
-    public void TopTrigger(GameObject other) {
-        if (!gameOver && !triggered) {
+    public void Collision(bool trigger, GameObject obj) {
+        if (!trigger && !gameOver && !triggered) { // Hit anything else
+            EnableRagdoll();
+            gameOver = true;
+            //Debug.Log("HIT ROAD");
+            gm.GameOver();
+        }
+        if (trigger && !gameOver && !triggered) { //Jump into car
             triggered = true;
             player.SetActive(true);
-            player.GetComponent<PlayerControll>().Enter(other.transform.parent.gameObject);
+            player.GetComponent<PlayerControll>().Enter(obj.transform.parent.gameObject);
             player.transform.position = new Vector3(rb.position.x, player.transform.position.y, player.transform.position.z); //move player to the x of ragdoll
-            Destroy(other); //Destroy car trigger
+            Destroy(obj); //Destroy car trigger
             Destroy(gameObject); //Destroy ragdoll
         }
     }

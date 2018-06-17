@@ -48,6 +48,9 @@ public class SegmentManager : MonoBehaviour {
         GameObject go = (pool.Count > 0) ? pool.Dequeue() : MakeSegment();
         spawned.Enqueue(go);
         segmentBehavior.ActivateSegment(go,this);
+        var t = go.transform.localPosition;
+        t.y = -100;
+        go.transform.localPosition = t;
         return go;
    }
 
@@ -162,7 +165,6 @@ public class SegmentManager : MonoBehaviour {
         gom.transform.SetParent(transform);
         spawned.Enqueue(gom);
     }
-
 
     #endregion
 }

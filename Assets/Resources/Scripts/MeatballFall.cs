@@ -7,9 +7,4 @@ public class MeatballFall : MonoBehaviour {
 	void Start () {
         rb.AddForce(Vector3.up * 10000);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
